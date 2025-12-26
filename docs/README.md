@@ -15,3 +15,4 @@ Conventions
 - Add a small Decision log section for non-obvious choices.
 
 Last updated: 2025-12-26
+📄 [Abrir guía en el navegador (raw)](https://raw.githubusercontent.com/arturdavidherrera1979-hash/dronia/main/docs/DRONIA_guia_estructura_repo_v2.html)
