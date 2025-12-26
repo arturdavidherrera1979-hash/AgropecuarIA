@@ -15,7 +15,7 @@ Conventions
 - Add a small Decision log section for non-obvious choices.
 
 ## Guía del repositorio
-📘 Guía (GitHub): https://github.com/arturdavidherrera1979-hash/dronia/blob/main/docs/DRONIA_guia_estructura_repo_v2.html  
-🌐 Abrir/descargar (raw): https://github.com/arturdavidherrera1979-hash/dronia/raw/main/docs/DRONIA_guia_estructura_repo_v2.html
+📘 [Guía de estructura y acceso](docs/guia_repo.md)
+
 
 
