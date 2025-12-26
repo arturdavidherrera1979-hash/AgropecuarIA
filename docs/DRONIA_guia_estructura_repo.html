@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DRONIA – Guía del repositorio y estructura</title>
+  <style>
+    :root {
+      --bg:#0b0f14;
+      --card:#121824;
+      --text:#e7eefc;
+      --muted:#a8b3c7;
+      --accent:#7dd3fc;
+      --border:rgba(255,255,255,.10);
+      --code:#0f172a;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg), #070a0f);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 28px 18px 16px;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(700px 350px at 20% 0%, rgba(125, 211, 252, .18), transparent 55%);
+    }
+    .container { max-width: 980px; margin: 0 auto; padding: 0 18px 40px; }
+    h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: .2px; }
+    .subtitle { margin: 0; color: var(--muted); }
+    .badge {
+      display: inline-block; padding: 4px 10px; border: 1px solid var(--border);
+      border-radius: 999px; font-size: 12px; color: var(--muted);
+      margin-top: 10px;
+    }
+    section { margin-top: 18px; }
+    .card {
+      background: rgba(18, 24, 36, .85);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 16px;
+      backdrop-filter: blur(6px);
+    }
+    h2 { font-size: 18px; margin: 0 0 10px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; color: var(--accent); }
+    p { margin: 8px 0; }
+    ul { margin: 8px 0 0 18px; }
+    li { margin: 6px 0; }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12.8px;
+    }
+    pre {
+      background: var(--code);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      overflow-x: auto;
+      margin: 10px 0 0;
+      color: #dbeafe;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th { background: rgba(255,255,255,.04); color: var(--muted); font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+    .path { white-space: nowrap; color: #e0f2fe; }
+    .muted { color: var(--muted); }
+    .callout {
+      border: 1px dashed rgba(125,211,252,.45);
+      background: rgba(125,211,252,.06);
+      padding: 12px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>DRONIA – Guía del repositorio y estructura</h1>
+    <p class="subtitle">Documento para alinear al equipo: acceso al repo, reglas de uso y propósito de cada carpeta.</p>
+    <div class="badge">Actualizado: 2025-12-26</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="card">
+    <h2>0) Acceso al repositorio (para nuevos colaboradores)</h2>
+    <p><strong>Link oficial del repositorio:</strong> <a href="https://github.com/arturdavidherrera1979-hash/dronia" target="_blank" rel="noopener">https://github.com/arturdavidherrera1979-hash/dronia</a></p>
+
+    <div class="callout">
+      <strong>Paso previo:</strong> aceptar la invitación a colaborar en GitHub (si te llegó por mail o notificación).
+      Sin aceptar la invitación, un repo privado puede verse como “no existe” o “no encontrado”.
+    </div>
+
+    <h3>¿Necesito instalar algo?</h3>
+    <ul>
+      <li><strong>Solo para leer / revisar:</strong> no. Con navegador alcanza (GitHub Web).</li>
+      <li><strong>Para editar documentos simples:</strong> podés hacerlo desde la web (botón <em>Edit</em> / crear PR).</li>
+      <li><strong>Para trabajar con código:</strong> recomendado instalar <strong>GitHub Desktop</strong> o <strong>Git (línea de comandos)</strong> para clonar y versionar en tu PC.</li>
+    </ul>
+
+    <h3>Opción A: GitHub Web (sin instalaciones)</h3>
+    <ul>
+      <li>Entrá al link del repo.</li>
+      <li>Podés navegar carpetas, ver Issues, revisar PRs.</li>
+      <li>Para cambios chicos en docs: editar archivo → “Commit changes” → idealmente vía Pull Request.</li>
+    </ul>
+
+    <h3>Opción B: GitHub Desktop (recomendado para no técnicos)</h3>
+    <ul>
+      <li>Instalá GitHub Desktop.</li>
+      <li>Iniciá sesión con tu cuenta GitHub.</li>
+      <li><em>File → Clone repository</em> → elegí <code>dronia</code> → seleccionar carpeta local.</li>
+      <li>Editar en tu editor favorito → commit → push → PR desde Desktop.</li>
+    </ul>
+
+    <h3>Opción C: Git (CLI) para desarrolladores</h3>
+    <ul>
+      <li>Instalá Git for Windows.</li>
+      <li>Cloná por HTTPS y autenticá con GitHub (token/credenciales). Con GitHub CLI, suele bastar con: <code>gh auth setup-git</code>.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>1) ¿Para qué sirve este repositorio?</h2>
+    <p>
+      El repositorio <strong>DRONIA</strong> es el “centro de gravedad” del proyecto: acá viven el código,
+      la documentación y los artefactos de gestión (issues, plantillas, minutas).
+      La idea es que cualquier participante pueda entrar, entender el estado y contribuir sin depender de memoria oral.
+    </p>
+
+    <h3>Regla simple</h3>
+    <ul>
+      <li><strong>Todo lo que se decide</strong> (técnico/comercial/operativo) debe quedar reflejado en <code>docs/</code> y/o en un Issue.</li>
+      <li><strong>Todo lo que se ejecuta</strong> (código/pipeline) vive en <code>src/</code> y se prueba desde <code>tests/</code>.</li>
+      <li><strong>Todo lo que se repite</strong> (plantillas, SOPs) debe quedar en el repo para que sea reutilizable.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>2) Mapa rápido de la estructura</h2>
+    <pre>
+dronia/
+├─ .github/
+│  ├─ workflows/
+│  │  └─ ci.yml
+│  ├─ ISSUE_TEMPLATE/
+│  │  ├─ business_model.md
+│  │  ├─ tech_research.md
+│  │  └─ meeting_note_template.md
+│  └─ PULL_REQUEST_TEMPLATE.md
+├─ docs/
+├─ business/
+├─ commercial/
+├─ hardware/
+├─ meetings/
+├─ src/
+│  └─ dronia_core/
+├─ tests/
+├─ Dockerfile
+├─ requirements.txt
+├─ README.md
+├─ LICENSE
+└─ .gitignore
+    </pre>
+    <p class="muted">Nota: pueden existir archivos adicionales con el tiempo; esto describe el “núcleo” inicial.</p>
+  </section>
+
+  <section class="card">
+    <h2>3) ¿Para qué sirve cada carpeta?</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ruta</th>
+          <th>Propósito</th>
+          <th>¿Quién la usa más?</th>
+          <th>Contenido típico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="path">.github/</td>
+          <td>Automatización y estándares en GitHub (CI, plantillas, PRs).</td>
+          <td>Todo el equipo</td>
+          <td>Workflows de Actions, templates de Issues/PRs.</td>
+        </tr>
+        <tr>
+          <td class="path">.github/workflows/</td>
+          <td>Pipeline de CI (integración continua) que corre automáticamente en pushes/PRs.</td>
+          <td>Dev / QA</td>
+          <td><code>ci.yml</code> para ejecutar tests y validar que el repo esté sano.</td>
+        </tr>
+        <tr>
+          <td class="path">.github/ISSUE_TEMPLATE/</td>
+          <td>Plantillas para crear issues con formato consistente.</td>
+          <td>PM / Equipo</td>
+          <td>Formularios de tareas: negocio, research técnico, minutas.</td>
+        </tr>
+        <tr>
+          <td class="path">docs/</td>
+          <td>Documentación viva: visión, roadmap, arquitectura, definiciones.</td>
+          <td>Todo el equipo</td>
+          <td>Visión, roadmap, data model, MVP definition, decision log.</td>
+        </tr>
+        <tr>
+          <td class="path">business/</td>
+          <td>Material del modelo de negocio (Canvas, hipótesis, costos/beneficios).</td>
+          <td>Negocio</td>
+          <td>Business Model Canvas, propuesta de valor, segmentación, unit economics.</td>
+        </tr>
+        <tr>
+          <td class="path">commercial/</td>
+          <td>Go-to-market, pricing, mensajes, canales y proceso de venta.</td>
+          <td>Comercial</td>
+          <td>GTM, pricing, scripts de outreach, objeciones/respuestas.</td>
+        </tr>
+        <tr>
+          <td class="path">hardware/</td>
+          <td>Investigación y decisiones de drones/sensores (stack operativo).</td>
+          <td>Técnico/Operaciones</td>
+          <td>Comparativas de plataformas, sensores, criterios, costos.</td>
+        </tr>
+        <tr>
+          <td class="path">meetings/</td>
+          <td>Minutas y plantillas de reuniones para no perder decisiones.</td>
+          <td>Todo el equipo</td>
+          <td>Template de minuta y minutas por fecha.</td>
+        </tr>
+        <tr>
+          <td class="path">src/</td>
+          <td>Código fuente del proyecto (la “parte ejecutable”).</td>
+          <td>Dev</td>
+          <td>Módulos Python, pipeline, herramientas internas.</td>
+        </tr>
+        <tr>
+          <td class="path">src/dronia_core/</td>
+          <td>Núcleo del código: entrypoint y lógica principal del servicio/pipeline.</td>
+          <td>Dev</td>
+          <td><code>main.py</code>, librerías internas, utilidades comunes.</td>
+        </tr>
+        <tr>
+          <td class="path">tests/</td>
+          <td>Pruebas automatizadas para asegurar que cambios no rompan lo existente.</td>
+          <td>Dev / QA</td>
+          <td>Tests unitarios/integración (ej. <code>pytest</code>).</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>4) Archivos importantes (qué son y por qué importan)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Archivo</th>
+          <th>Para qué sirve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="path">README.md</td>
+          <td>Portada del repo: qué es DRONIA, cómo arrancar y dónde mirar primero.</td>
+        </tr>
+        <tr>
+          <td class="path">requirements.txt</td>
+          <td>Dependencias Python mínimas para correr el proyecto y los tests.</td>
+        </tr>
+        <tr>
+          <td class="path">Dockerfile</td>
+          <td>Contenedor para ejecutar el proyecto de forma consistente (útil para despliegues/pipeline).</td>
+        </tr>
+        <tr>
+          <td class="path">.gitignore</td>
+          <td>Evita subir basura al repo (entornos virtuales, caches, logs).</td>
+        </tr>
+        <tr>
+          <td class="path">LICENSE</td>
+          <td>Define los términos de uso del código (importante para colaboradores y futuros partners).</td>
+        </tr>
+        <tr>
+          <td class="path">.github/PULL_REQUEST_TEMPLATE.md</td>
+          <td>Checklist para PRs (calidad mínima y contexto).</td>
+        </tr>
+        <tr>
+          <td class="path">.github/workflows/ci.yml</td>
+          <td>CI: ejecuta tests en cada push/PR. Si se pone rojo, es una alarma útil.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>5) Cómo contribuir sin romper nada</h2>
+    <ul>
+      <li><strong>Documentación:</strong> edita/crea archivos en <code>docs/</code>, <code>business/</code>, <code>commercial/</code>, <code>hardware/</code> y vincula el cambio a un Issue.</li>
+      <li><strong>Código:</strong> trabaja en ramas (branch) y abre PRs. Asegurate de que CI quede verde.</li>
+      <li><strong>Minutas:</strong> cada reunión deja una minuta en <code>meetings/</code> y actualiza decisiones relevantes en <code>docs/</code>.</li>
+    </ul>
+    <p class="muted">
+      Tip: si un cambio es “decisión” (no solo texto), agregá una sección <em>Decision log</em> en el doc correspondiente.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    DRONIA – Guía de repo. Recomendación: subir este HTML dentro de <code>docs/</code> y enlazarlo desde el README.
+  </div>
+</footer>
+
+</body>
+</html>
