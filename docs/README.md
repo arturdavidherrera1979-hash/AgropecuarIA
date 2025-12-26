@@ -15,7 +15,7 @@ Conventions
 - Add a small Decision log section for non-obvious choices.
 
 ## Guía del repositorio
-📘 [Guía de estructura y acceso](docs/DRONIA_guia_repo.md)
+📘 [Guía de estructura y acceso](DRONIA_guia_repo.md)
 
 
 
