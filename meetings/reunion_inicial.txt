@@ -1,0 +1,279 @@
+# Meeting Transcription
+
+  Meeting started: 11/12/2025, 07:50:49
+  Duration: 42 minutes
+  Participants: Arturo Herrera, Emmanuel Rubado, Leonardo Feas
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/0QFZNHdK4GgOkdXglAdM?o=txt)
+
+    ## Summary and Action items
+
+### Quick summary ###
+
+During this meeting, Leonardo, Emmanuel, Arturo discussed, el desarrollo de un servicio integral para agricultura basado en mapeo por drones y explotación de datos con inteligencia artificial para optimizar siembras, reducir costos de fumigación y aumentar la productividad por hectárea. Acordaron trabajar en dos patas principales: la recolección e integración de sensores/drone y la plataforma de IA que genere recomendaciones operativas; además definieron reuniones periódicas y validar con entidades técnicas (INTA, CREA, Sociedad Rural).
+
+### Action items for Leonardo ###
+
+- [ ] Redactar y plasmar por escrito la visión completa del servicio: alcance, variables a medir y propuesta de valor (productividad y ahorro). Plazo: 5 días.
+- [ ] Identificar y contactar ingenieros agrónomos y contactos en INTA/CREA/Sociedad Rural para validación técnica y apoyo inicial. Plazo: 1 semana.
+- [ ] Preparar estimación inicial de costos y modelo de precios por hectárea comparando costos actuales (mosquito/avión) vs propuesta con dron. Plazo: 10 días.
+
+### Action items for Emmanuel ###
+
+- [ ] Investigar y listar sensores y tecnologías existentes (drones de escaneo, sensores de humedad/temperatura, detectores de plagas) que se puedan integrar. Plazo: 5 días.
+- [ ] Definir la factibilidad técnica inicial: qué datos se pueden recolectar hoy y cómo integrarlos a un modelo de IA. Plazo: 7 días.
+- [ ] Coordinar y proponer formato y agenda para reuniones semanales de seguimiento (30 minutos). Plazo: coordinar en 48 horas.
+
+### Action items for Arturo ###
+
+- [ ] Recopilar y organizar la información técnica y documental (papers, estudios de CREA/INTA) que sirvan para el modelado y validación. Plazo: 7 días.
+- [ ] Elaborar un primer resumen/mapa del modelo de negocio: módulos posibles, prioridades para implementación temprana y fuentes de datos necesarias. Plazo: 7 días.
+- [ ] Preparar una propuesta de alineamiento con proveedores de drones/operadores locales (opción de tercerizar aeroaplicación) y logística inicial. Plazo: 10 días.
+
+
+
+  
+
+  
+    ## Highlights
+
+    > 01:36 Leonardo Feas: Usualmente se lo recorre finalmente a caballo o se lo recorría en camioneta? Para resolver la fumigación se usaba un equipo que le decía mosquito. El mosquito cada vez que entra al campo sembrado hace m***** una cantidad importante. Importante porque va pisando este el temporado ok.
+> 34:41 Arturo Herrera: Bueno me parece bien, yo te digo con toda esta información Denme unos días y les voy a ir mostrando, quiero que tenemos Y qué resumen y y armo un mapa de a ver si
+
+  ## Transcript
+
+  00:00 Leonardo Feas: Arturo Sí están muteados.
+00:18 Emmanuel Rubado: Yo estoy prendido Leo te escucho.
+00:20 Leonardo Feas: no Queden la cámara?
+00:24 Emmanuel Rubado: Arthur quieres grabarlo
+00:30 Leonardo Feas: Arturo estás ahí.
+00:32 Arturo Herrera: Hola hola hola. Me escuchan.
+00:36 Leonardo Feas: Sí, se escucha.
+00:37 Arturo Herrera: Bueno, bueno, Ahí está ahí está, sí, siempre.
+00:42 Arturo Herrera: Hola a todos, este es un mensaje automático para informarles mi extensión Tactiq: https://tactiq.io/r/transcribing está transcribiendo esta reunión para que pueda brindarles toda mi atención.
+00:48 Leonardo Feas: Bueno estamos
+00:49 Arturo Herrera: Bueno estamos
+00:51 Leonardo Feas: Bueno, vuelve Entonces hasta hace no hace tanto tiempo. todos los campos de siembra Tenían un problema y era que por el espacio que se hace en en para cada Cuando se abra la tierra viste que da un espacio determinado en cada zanjita sí tiene un nombre particular y no me lo acuerdo. Okay entonces se lo hacen determinado espacio. Porque no tenían control ni de humedad que había dentro del sembrado. Ni de temperatura ni de cantidad de bichos ni nada por el estilo.
+01:36 Leonardo Feas: Usualmente se lo recorre finalmente a caballo o se lo recorría en camioneta? Para resolver la fumigación se usaba un equipo que le decía mosquito. El mosquito cada vez que entra al campo sembrado hace m***** una cantidad importante. Importante porque va pisando este el temporado ok.
+02:01 Leonardo Feas: Ahora por otro lado en las fumigación se aplicaba el peor escenario. Que es donde vos encontrabas mucho bicho, decías bueno fumigo todo el campo. con la densidad del peor escenario
+02:19 Arturo Herrera: Bien, las dudas Sí sí, sí, entiendo sí.
+02:19 Leonardo Feas: Me van siguiendo. Cómo
+02:27 Arturo Herrera: una parte sino todo
+02:28 Leonardo Feas: entonces, claro es todo como Venía lo otro en vez de ser el mosquito era la aeroaplicación que son los famosos aviones fumigadores. Porque era lo que tenía de bueno el avión fumigador el avión fumigador lo que tenía de bueno, es que no te pisaba el sembrado. Pero ahí donde empezaban los problemas Aunque vos, tenías que tener un campo suficientemente grande para que se justifique por hectárea total.
+02:55 Emmanuel Rubado: nairo no, Sí claro, Sí
+02:56 Leonardo Feas: Claro, meter un avión si tenías un avión un un campo chiquito, no te servía porque el avión la cantidad de pasadas que tiene que hacer no le da, o sea, es anti económico. Y por otro lado lo que pasa ahí. Bueno, lo de siempre no, el tamaño del lagota, la cantidad de de de cosas que tienes que tirarle ahora. Solamente esto se empezó a ver hace cinco años lo que de lo que estamos Charlando nosotros solamente cinco años.
+03:28 Leonardo Feas: y hoy ya está ganando popularidad pero No tienen un mapa completo a mí mi idea es ofrecer un servicio completo donde le vos le vayas haciendo un mapa calor calor de temperatura de la semilla humedad humedad de la tierra y humedad de la planta avance de la planta crecimiento de la planta bichos, porque eso tiene distintas densidades, por ejemplo, vos le pasas la máquina, la le escaneas, se lo sensás de alguna manera y a lo mejor en una punta del sembrado tiene una densidad determinada en el medio tiene otra y en la otra punta tiene otra.
+04:11 Leonardo Feas: Las aeroaplicaciones que vos le puedes hacer ahora son específicas de acuerdo a la densidad eso le genera ahorro porque no se lo pisas y Ahorro porque usas menos producto, me seguís me siguen más. y al mismo tiempo hay algo que yo tengo una duda que pensaba resolverla este fin de semana y no pude porque no, di con la persona finalmente es Cuando se siembra se siembra cada Como le digo yo esa zanjita. Va un espacio determinado.
+04:48 Leonardo Feas: Yo entendía que el espacio se establecía en función de que vos puedas operarlo. Ahora vos la zanjita, puede ser o más ancha o más angosta en función de eso también es la productividad que tengas me siguen. Porque una cosa es que hagas 10 anjitas y otra cosa que metas quince. va Entonces solo que no lo que tengo dudas una. Es posible que con esta tecnología los tipos puedan tener sembrar más semillas más eficientemente porque vos le estás dando más información uno.
+05:29 Leonardo Feas: Dos con esta con esta tecnología vos le podés dar un mapa de calor de que si necesitan agua o sin lo que necesiten antes. de ver los daños
+05:43 Arturo Herrera: Como como está el campo y y como es y lo haga en cuando se necesita, no?
+05:52 Leonardo Feas: Exacto claro, exactamente exactamente entonces Yo cuando ayer vos decías que podés tener núcleos con distintas capacidades, me quedé pensando, por ejemplo, Qué perfil de qué perfil de profesional usaría yo. Y yo quisiera un ingeniero agrónomo.
+06:17 Arturo Herrera: seguro
+06:18 Leonardo Feas: Con información general punto yo quisiera un especialista en suelos porque se te va a dar qué sabe qué sabe de humedad? Cómo se sensa? Cómo no se centra?
+06:25 Arturo Herrera: los perfiles
+06:28 Leonardo Feas: Cómo se mira otro? No te escuché perdón.
+06:36 Arturo Herrera: No digo que está bueno Esto que tiene los perfiles de lo que de los que saben
+06:40 Leonardo Feas: claro
+06:42 Arturo Herrera: de los que saben el negocio completo.
+06:44 Leonardo Feas: Qué buscaría buscaría un especialista en plagas? Buscarían un biólogo que me puede llegar a decir en función de cada especie que tengo sembrada Cuál sería la humedad óptima la temperatura óptima la densidad óptima por metro cuadrado bla bla se me siguen con esto.
+07:09 Arturo Herrera: Sí seguramente hay muchos artículos y cosas de eso ya pensado esta información Se va a tener algún lado la podemos recoger de una web.
+07:19 Leonardo Feas: Por eso yo por eso venía pensando justamente eso no?
+07:23 Arturo Herrera: ahí podemos meternos con la con la
+07:26 Leonardo Feas: Por eso qué otro qué otro perfil buscaría yo buscaría Más allá de todo lo que digan buscaría un crea inta papers de inta o de crea. Específicamente porque ellos tienen determinados laboratorios por zonas. Que te dan métricas y experiencias específicas.
+07:50 Arturo Herrera: Sí porque además nomás tiene que ser para para cada zona es decir, no podemos hacer algo súper general. Yo tendría que evaluar obviamente cómo se comporta el campo según el clima y qué producción tiene cada zona.
+08:02 Leonardo Feas: Según la producción según el piso según la zona según el clima según la humedad Cómo es la Cómo son las los pronósticos de lluvia acá seis meses.
+08:12 Arturo Herrera: Cuáles son los parámetros de la zona más productiva ponerle no como para tener una idea de eso.
+08:18 Leonardo Feas: Mirá Eso sale solo hoy hay mucho de eso lo que yo no sé, es Cómo recolectarlo y cómo cruzarlo. Emma decime si estoy confundiendo o estoy aportando algo, eh? Paren mes y me voy de rosca. además estás
+08:42 Emmanuel Rubado: Yo leo Me escuchas sí te escucho.
+08:43 Leonardo Feas: Ah Perfecto perfecto no digo se entiende Lo que estoy planteando o
+08:49 Emmanuel Rubado: No si se entiende y a mí me gustaría Leo si todo eso se puede esas variables que vos estás mencionando. Ahora se se pueden volcar y todo todo eso son
+08:55 Leonardo Feas: es
+08:59 Emmanuel Rubado: sensores que que ya existen solamente tendríamos que nosotros integrarlos no Y como que captar todo eso y en base a lo que te dice el ingeniero agrónomo hacer esos cálculos para para poder ver cómo
+09:10 Leonardo Feas: Yo por eso por eso hablaba de núcleos viste que ayer Arturo hablaba de núcleos y que cada núcleo podías ponerle un perfil determinado de bueno a ver poneme el ingeniero agrónomo poneme el especialista en plagas poneme el especialista
+09:23 Arturo Herrera: por eso
+09:27 Leonardo Feas: en la vuelta O sea no no la plaga sino el que mete los veneno no sé cómo se llama el especialista en eso poneme el especialista en pisos poneme el especialista Ponerme un climatólogo que me diga de acá a seis meses poneme
+09:46 Arturo Herrera: Dale vos, me decís los perfiles y yo eso lo bajo a de dónde obtener la información porque todo eso todo eso que tenemos información.
+09:52 Leonardo Feas: Pero a ver, yo lo que les Ok lo que yo les pido es no se queden con lo que yo digo.
+09:59 Arturo Herrera: No claro, a ver, saquemos de acá y lo que yo pueda recolectar información.
+10:01 Leonardo Feas: la idea La idea es
+10:06 Arturo Herrera: Es la idea, te tira cosas muy buenas, pero siempre hay que cotejarlas.
+10:12 Leonardo Feas: Lo que yo le digo eschenme las ideas. Por un segundo olvídate de la idea
+10:19 Arturo Herrera: Yo te escucho hablar porque quiero entender del tema primero.
+10:19 Leonardo Feas: Lo que yo necesito el que ustedes me digan Leo la estás cagando y pensemos Porque si yo tengo siempre razón, no necesito dos socios. Lo hago solo y yo estoy se entiende, no lo que digo. Okay fenómeno Entonces primero lo que yo vengo estudiando es más ya me viene escuchando el último año decir esta misma pelotudas. Antes los equipos eran muchísimo más chiquitos. Hoy les mandé uno y se cayeron de c*** los dos no podían creer que ese equipo existiera en Argentina Bueno, los equipos vienen creciendo a una velocidad que en cualquier momento va a estar volando parada.
+11:03 Leonardo Feas: Yo estoy, seguro que de acá a un año estamos volando con 500 kilos con media tonelada con media tonelada, vas a poder hacer un campo con la pija muerta. entonces
+11:17 Arturo Herrera: Cosa porque la transcripción viste me queda.
+11:21 Leonardo Feas: Te queda sucia Bueno te pido perdón bueno Okay entonces. Bueno, búrlalo Eso después Entonces cuál es el punto como lo veo yo. Primero nosotros Nosotros imaginar, esto tiene dos patas y lo dijo bien Emma uno todo lo que sea mapeo. Y y sensor sensores térmicos bla bla bla bla, que ya tienen porque se dieron cuenta que lo que le mandé hoy ya muchas de esas cosas existen están en el mercado ya existen.
+11:56 Leonardo Feas: ellos por un lado por otro lado Ese hace con toda esa información para optimizar la explotación de datos, Porque a lo mejor tenés un montón de datos que no haces absolutamente nada. Y ahí me parece lo más lindo de todo esto. Porque máquina según sigue sensores, se consiguen esa explotación está cuánto hay que poner de cuánto hay que poner de la gota la gota pero para mí lo más rico es datos volumen de datos Y cómo los vendes.
+12:32 Arturo Herrera: volumen de datos el tenemos que vender que hacer Más que volumen de datos volumen de datos debemos trabajar nosotros para decidir qué hacer con eso.
+12:39 Leonardo Feas: No hasta Bueno pero tenés que estar preparado a recibir los datos que vos necesitás.
+12:44 Arturo Herrera: Bueno está bien Por eso, pero habíamos la solución que tenemos que darle que tiene que hacer. Che tenés tu campo así tu campo está en tres o cuatro líneas que entiende el tipo, si no le vamos a dar la digamos el toque exacto de inteligencia decirle. Mira tu campo está en este estado. Te aconsejamos hacer esto. Ahí está el el que le llama la atención al tipo porque sale su campo más que
+13:06 Leonardo Feas: sí y te digo y una cosa más, pero para
+13:14 Arturo Herrera: nadie entendés entonces.
+13:16 Leonardo Feas: Sí pero ahí te falta una parte como el tiempo es el que conoce de su campo más que nadie. Lo que le falta a eso es que vos puedas hacer los ajustes en función del tipo.
+13:28 Arturo Herrera: Los ajustes o tiene un histórico O tiene algo o se empieza a hacer a partir de que empieza a instalar el sistema y empieza un histórico? el comportamiento de su suelo específicamente
+13:42 Leonardo Feas: y el tipo tiene un histórico, pero no lo va a tener en función de de los datos mapeados por
+13:48 Arturo Herrera: Lo puede volcar con información que nosotros?
+13:53 Leonardo Feas: No decir algo hoy 90% de los campos van con un mosquito y le mandan le mandan veneno y le dan mecha. En función de la mayor densidad que el ingeniero, por ejemplo van y miden no. Y les dice Oh tenemos, no sé bicho a en tal parcela, sabes qué hacen pueden darle a todos por las dudas a la peor densidad? Eso es un montón de guita. Eso es un eso es un montón de guita.
+14:29 Leonardo Feas: Para mí ahí forma parte del valor agregado donde vos le digas al tipo. Yo te
+14:34 Arturo Herrera: bueno
+14:36 Leonardo Feas: lo sobrevuelo, te lo mapeo y te muestro Dónde están las cosas. Y te digo que bichos hay y te digo Cuáles son las recomendaciones que te que te hago. Después empiezan otros negocios nuestros que es cuál ven no comprás cuál no
+14:48 Arturo Herrera: correcto
+14:52 Leonardo Feas: comprás cómo lo aplicas quién lo aplica bla bla bla bla bla bla o si ustedes no quieren, no, no entramos en ese negocio Buscar en otra pata. Quién hace la aplicación pero para mí es una pelotudez, no agarrar el negocio de la aplicación porque tenés más más rentabilidad, dónde En qué le digo el tipo no te hablemos yo yo te traigo el veneno, tengo que tener Regular o aplicador, te traigo todo y Chau me entendés.
+15:24 Leonardo Feas: y ahí ahí nos tenemos que hacer amigos de los ingenieros agrónomos que digan sí, esta empresa muy seria, yo trabajo con ellos en tales Campos La cosa empieza a ser como los visitadores médicos viste.
+15:40 Arturo Herrera: entiendo
+15:40 Leonardo Feas: Este viste como viste el traumatólogo que va con su ecógrafo o abajo del brazo y te hace la secografías es lo mismo esto mismo negocio.
+15:52 Arturo Herrera: Bien, Yo yo me parece que tenemos que encontrar lo que viste, le llaman dolores odiosa palabra Dolores que a ver dónde el el productor le gustaría. Dónde ve que pierde rentabilidad primero que usa mal uso del campo, Sí él cree que puede usar más superficie sembrada. A cambio de no tener que hacer surcos para las máquinas ese es un buen punto El otro, es el otro economizar economizar el uso de fumigadores y de todo lo que es
+16:23 Leonardo Feas: otra otra
+16:31 Arturo Herrera: aplicación de antiplagas, etcétera, ahí también se ahorra mucha plata.
+16:33 Leonardo Feas: sí Se te cuento más se pierden sembrados.
+16:37 Arturo Herrera: sí
+16:40 Leonardo Feas: Porque te agarra una temporada de agua. Y las máquinas no pueden entrar. Me seguís las máquinas por el peso que tienen no pueden entrar directamente.
+16:51 Arturo Herrera: claro Con lo cual no puede Ni siquiera fumigar Nada aquí al campo ahí a expensa de
+17:01 Leonardo Feas: No pueden hacer un Choto nada.
+17:07 Arturo Herrera: que la inundación se vaya. O tenga suerte de que no tiene plaga o nada.
+17:13 Leonardo Feas: No es que no tienen piso para pisar, no sé si ustedes entraron a un campo alguna vez muy mojado.
+17:18 Arturo Herrera: Pero a ver el campo puede estar muy mojado Pero puedes tirarle algo encima el tema es que uno tiene un costoso comprar un avión de última para que el campo porque no puedes entrar.
+17:27 Leonardo Feas: No tiene claro, no tienen piso para meter el mosquito que yo les cuento.
+17:32 Arturo Herrera: Bueno pero puede hacer al campo si Está inundado a pesar de que podrían fumigar
+17:38 Leonardo Feas: Olvídate de la palabra inundado porque no te lo imagines inundado, imagínatelo.
+17:44 Arturo Herrera: nada
+17:47 Leonardo Feas: Pero que es interesante esto que te estoy diciendo, eh? Que nosotros desde acá de Buenos Aires no nos damos cuenta, no necesito que esté inundado el campo para que no pueda entrar nadie. No es necesario con las lluvias que hay del niño y todo el baile que hay muchísimos Campos no tienen piso para que se meta una máquina medio pesada. Se entiende. Emma Emma es el se entiende Perfecto entonces yo metería la Inteligencia artificial a preguntarle, por ejemplo.
+18:33 Leonardo Feas: de verdad Si se pudieran si lo Ahí está me salió la palabra los surcos, pueden llegar a ser más cerca más cerraditos. En función de poder controlar y tener mejor sensores de temperatura y humedad, por ejemplo. Y entonces vos al tipo le estás vendiendo mayor eficiencia, le estás vendiendo
+18:58 Emmanuel Rubado: Okay.
+19:00 Leonardo Feas: mayor densidad le está vendiendo un montón de cosas. Pero bueno acá hay un Perdón no a lo mejor lo estoy dando mucho mucho rosca y los estoy volviendo locos.
+19:17 Emmanuel Rubado: Yo te quería preguntar Leo es más que nada.
+19:20 Arturo Herrera: Bajemos todo todo para que todo que transcriptó y después con esos documentos vamos, viste afinando todo tema por tema.
+19:27 Leonardo Feas: bueno
+19:28 Emmanuel Rubado: Yo te quería preguntarleo Cómo atacar, esto viste cómo cómo atacar? Porque es un mundo muy grande como Cómo podemos atacarlo Y qué es lo que desde lo técnico necesitamos como factibilidad para poder encarar esto como para viste primero sacar dudas y ver factibilidades técnicas comerciales como para no mandarnos a hacer algo y no cierra.
+19:48 Leonardo Feas: Para para mí para mí esto tiene dos etapas para como lo veo yo, eh? Lo primero que es realmente la parte que hoy no hay y es Cómo haces que la Inteligencia artificial labure a favor tuyo y es recolectando la totalidad de las variables que hay en en una siembra. se entiende es temperatura humedad piso proyección de temperatura y de humedad Cuáles son las variables Cuáles son todas las variables que tenés en una siembra.
+20:28 Leonardo Feas: otra variable es El piso si tiene que estar, por ejemplo tenés que ponerle nitrógeno, qué sé, yo digo algo, no alguna faja para que mejore. El tipo de nutrientes si se puede llegar a medir de alguna manera. mapear todo un campo e identificar En qué lugar necesitan más nutrientes que en otros
+20:54 Arturo Herrera: Sí yo hago un paso para atrás, vos decís toda la información que estás para para sembrar para fumigar, o sea, porque tenés muchas cosas para hacer en el campo.
+21:06 Leonardo Feas: Claro vos en el campo tenés mucho.
+21:10 Arturo Herrera: Por eso digo Aquí vamos a apuntar, vamos a apuntar a que a que a mejorar la rentabilidad Está seguro sí, del sistema ahorrar el tipo guita una forma es ampliando la superficie de siembra.
+21:24 Leonardo Feas: No, no, yo no le voy a ahorrar guita, le voy a hacer ganar más plata.
+21:30 Arturo Herrera: Son dos cosas unos oralitas porque compra menos Sí o sea Es lógico, o sea.
+21:33 Leonardo Feas: No yo tengo que buscarle mayor productividad del campo Olvídate Cuál es el camino.
+21:41 Arturo Herrera: Son dos cosas unos bajar costos y aumentar la productividad tenemos que juntar las dos cosas.
+21:46 Leonardo Feas: Está fenómeno, pero yo cuando le vendo este proyecto le tengo que decir que el tipo que va a ganar más guita por hectárea al final del día Todo esto es
+21:55 Arturo Herrera: sí
+21:58 Leonardo Feas: Cuánta guita, le quedó después de la cosecha por hectárea.
+22:02 Arturo Herrera: Por eso, pero por eso te digo, me parece que son dos pasos por un lado el ahorro que le hacés porque le mejoras. Le haces el formulado de lo que necesita si no es a mansalba, como es el documento, sino que te dice chep para esto que vos estás necesitando Esto es lo que necesitas comprar, o sea, pero no tenés un ahorro de costo son dos cosas que más nos ahorra nada, pero el campo produce más son dos cosas importantes cerramos plata y de inversión, porque estas cosas además cosecha, vamos a estar tanto de esto eso también puede ser posibilidades un ahorro y además Un aumento de la productividad del campo.
+22:48 Leonardo Feas: Sí, Arturo es verdad. Pero el tipo el tipo sabes cómo lo mide. Todo esto que está diciendo vos.
+23:02 Arturo Herrera: claro
+23:02 Leonardo Feas: Cuánta guita le quedó más o menos por hectárea usando esto.
+23:08 Arturo Herrera: Biológico Sí claro, está claro.
+23:08 Leonardo Feas: sencillo
+23:11 Arturo Herrera: Claro, yo digo como como negocio funcionalidad nos conviene abarcar las dos cosas. Te hacemos rabita y además lamentable una propiedad del campo, o sea que le atacamos lo de las dos formas de
+23:25 Leonardo Feas: yo lo que creo es En este momento para mí.
+23:32 Arturo Herrera: Redondo Me parece que más redondo el el poder venderlo de esa manera que atacar las dos variables bajar costos y aumentar productividad.
+23:41 Leonardo Feas: Lo Sí sí, desde ya desde ya. Desde ya lo que pasa es que hoy nosotros estamos empezando a pensar esto y yo no me quiero poner a pensar cómo lo voy a vender lo que yo quiero entender hoy todavía. Por eso decía que para mí esto tiene dos patas por un lado lo que es.
+24:02 Arturo Herrera: Tenemos el más grande, tenemos la mejor de todas Sí y después vamos viendo con qué nos conviene empezar después vamos, me imagino, pero pensemos la más grande y tenemos el mapa completo lo que podría el sistema ofrecer.
+24:15 Leonardo Feas: Mirá el mapa el mapa completo para mí por como yo lo vengo pensando es tenés que tener datos mapear el campo censar el campo y que la Inteligencia artificial sea quien te diga cómo Deberías explotarlo.
+24:42 Arturo Herrera: Está claro si no no sirve por Inteligencia artificial.
+24:42 Leonardo Feas: Okay. si no, no me sirve para nada porque tiene un montón de
+24:48 Arturo Herrera: no
+24:51 Leonardo Feas: Cuál es el tema, es cuál es el poder identificar la totalidad de las variables que te permitan a través de la Inteligencia artificial? En cada etapa del proceso. establecer Qué acción tomar
+25:08 Arturo Herrera: exactamente Correcto es así.
+25:14 Leonardo Feas: Estamos de acuerdo ahora Tenemos una pata que es propia de de tecnología computacional que es inteligencia explotación de datos Inteligencia artificial y otra otra pata que es 100% operativa en el terreno. en mi visión si vos no tenés un dron que te dé información específica del campo de Emma Vos no le podés hacer ninguna recomendación.
+25:47 Arturo Herrera: El dron es fundamental el dron es fundamental para que escane el campo no
+25:48 Leonardo Feas: Porque vos No sabés.
+25:55 Arturo Herrera: chance.
+25:55 Leonardo Feas: Pero una un dron de escaneo.
+25:56 Arturo Herrera: Salgo de otras tecnologías hay para saber cómo está tu suelo también, no, no la descartemos.
+26:06 Leonardo Feas: bueno, no, por eso digo, pero un dron de escaneo es una cosa y un dron aero aplicador es otra ahí también tenemos que
+26:16 Arturo Herrera: Y bueno Sí claro.
+26:19 Leonardo Feas: Bueno ahí también tenemos que profundizar Para mí el escenario completo es el te doy todo y te acompaño todo el proceso.
+26:24 Arturo Herrera: bueno, el tema es OK Bueno yo creo ahí ahí podemos también pensar un plan b, que es primero y
+26:35 Leonardo Feas: La verdad es no, no hay problema.
+26:44 Arturo Herrera: tiene que ver con un tema de logística de guita de inversión Y si hay proveedores. Que ya tengan estos drones como un plan inicial, no? Si hay estos drones que los puedan dar información que nosotros requerimos. un sistema
+27:06 Leonardo Feas: No hay problema. Está bien fenómeno. Es que es lógico. Pero para qué c***** va a poner? Está perfecto, no hay problema. Hagámoslo, así hagámoslo así lo que yo quiero que entendamos bien, es hay una pata que es propio Inteligencia artificial que tiene mucho laburo y otra pata que es propiamente operativa. Que también tenemos que investigar un poco. Sí a ver de vuelta si les parece yo no no quiero obligar a nadie a seguir una idea mía, a mí me gusta esto porque me estoy dando cuenta que lo que yo venía pensando está sucediendo. Entonces me entusiasma mucho profundizarlo. Te acordás que esto lo venimos hablando de cuando no habían estos drones.
+28:00 Emmanuel Rubado: Sí, hace un año dos años atrás, digo.
+28:04 Leonardo Feas: Y está sucediendo entonces digo la p*** madre.
+28:08 Arturo Herrera: Está sucediendo y está viendo tecnología que primero soporte y una
+28:08 Leonardo Feas: pero parece
+28:13 Arturo Herrera: tecnología también creo que pueda medir. O sea, están están ahí las dos cosas.
+28:18 Leonardo Feas: Que ahí está apareciendo todo todo tus sueños y fantasías están apareciendo. Cuanto más rápido, te pongas adelante del de la ola mejor porque la ola te va a impulsar.
+28:30 Arturo Herrera: Sí y si no te te tapa un poquito Aparecen por todos lados otros otras otras soluciones.
+28:36 Leonardo Feas: Yo lo que solo que sí sé es que hay sensores que te marcan la densidad de bichos que tenés en la siembra y el tipo lo único que hace es eso va mide y te lo explica y se manda a mudar.
+28:52 Arturo Herrera: Te hago otra pregunta.
+28:53 Leonardo Feas: ese tipo
+28:55 Arturo Herrera: Una pregunta que tiene que ver justamente con este tema, no de lo que le vamos a vender. Si es estamos apuntando a Pequeños productores que pueden pagarlo todo y el dron más el sistema o podemos justamente eso decir Che un tipo que tiene miles de hectáreas, te va a pagar un dron y te va para el sistema y que ahora si vas
+29:16 Leonardo Feas: Te lo digo.
+29:16 Arturo Herrera: a un producto pequeño capaz.
+29:21 Leonardo Feas: Déjame. Déjame decirte lo distinto, déjame Arthur te lo planteo distinto. Hoy cualquiera tiene que terminar pagando entre 50 y 55 dólares la hectárea. Para que vaya el mosquito a fumigarle. ok Hasta acá entre un tipo de caballo y aplicó en todo el campo a uno sin ponerle 50, okay. Qué costo tiene agarrar un dronearlo bien escanear todo un campo y errarlo?
+30:04 Arturo Herrera: Tenemos que encargarle cargarnos de explicarles de dónde está su su ahorro de
+30:04 Leonardo Feas: Te puedo asegurar?
+30:13 Arturo Herrera: plata y su ganancia.
+30:15 Leonardo Feas: Hasta acá ahí en la aero aplicación solamente trabajaste ahorro? Por eso sí me gusta ir más allá y hablar de la productividad.
+30:29 Arturo Herrera: Claro, Sí sí.
+30:31 Leonardo Feas: Y terminar hablando y por eso a mí me gusta ir más allá y pensar señor, cuando cierres la campaña de sorgo girasol cebada o lo que sea por hectárea tu variable va a ser más 15% más 20%
+30:50 Arturo Herrera: Obvio obvio
+30:52 Leonardo Feas: Y en vez de gastar solamente en estos 50 dólares, yo te voy a cobrar 35 dólares y vas a tener toda esta información toda la campaña.
+31:03 Arturo Herrera: correcto
+31:05 Emmanuel Rubado: Perfecto, Tengo unas dudas para para ir más o menos cerrando el tema propongo lo siguiente podemos tener por lo menos dos reuniones semanales de 15 o 20 minutos para poder irle dándole más forma a la idea puede ser.
+31:20 Arturo Herrera: Hagamos media horita media horita porque por lo menos.
+31:24 Emmanuel Rubado: Dale por semana media hora está bien, les parece.
+31:24 Arturo Herrera: Al principio.
+31:29 Leonardo Feas: Sí, perfecto.
+31:30 Emmanuel Rubado: Bien, lo otro que te pregunto Leo vos, te animás a como plasmar eso que hablamos recién en escrito de del Cómo te lo imaginás, vos que es el análisis previo que tenemos que tener a tu idea Yo no, yo quiero terminar de entender cómo lo comercializaríamos esto Leo que no lo termino de ver, pero vos seguramente lo explicaste bien.
+31:52 Arturo Herrera: Es un servicio.
+31:54 Emmanuel Rubado: Ah bien Bueno está bien, yo voy a colaborar desde lo técnico chumeando un poco los sensores chumeando un poco las herramientas que ya existen actualmente pero en esencia, qué es lo que le vamos a brindar. Nosotros son datos para que ellos puedan decir, no?
+32:11 Leonardo Feas: No es es un ser para mí es un servicio.
+32:16 Emmanuel Rubado: un servicio
+32:17 Leonardo Feas: Le vas a brindar, es un servicio que va a tener un montón de un montón de cuestiones, después tenemos que ir definiéndolo eso también, pero para mí para mí vos deberías llegar antes de que el tipo siempre. Para hacerle un mapeo de su campo y decirle.
+32:35 Arturo Herrera: Fundamental el proceso previo a todo a la cosecha a la siembra a todo.
+32:43 Leonardo Feas: Para la siembra a todo. A ver, a lo mejor tenemos que estudiar un poco.
+32:51 Emmanuel Rubado: ok
+32:53 Leonardo Feas: o que nuestra Inteligencia artificial nos lo diga Cuál es el proceso en tu en de la siembra
+33:01 Arturo Herrera: Es fácil, eso se saca de cualquier estudio, están publicado un montón de cosas de cómo se cómo es el proceso de cómo trabaja el campo eso está eso es fácil de obtener.
+33:13 Leonardo Feas: Bueno eso sí se obtiene Pero tiene que ser lo lo más detallado posible.
+33:19 Arturo Herrera: a ver todo lo que nosotros obtengamos y yo tenga como información hay que cotejarlo sí, pero
+33:24 Leonardo Feas: eso lo hacemos cotejar Yo le Busco la vuelta para
+33:29 Arturo Herrera: Enorme tenerlo, cómo cómo lo tuyo y decimos si lo que estamos mostrando es una forma lógica y obviamente la gente de acá del campo, te dice la posta, no vamos a poder evitar tener que tener esas charlas con la gente.
+33:49 Leonardo Feas: La validación sabes que sabes que no necesito ni ir a la gente de campo.
+33:52 Arturo Herrera: claro
+33:55 Leonardo Feas: Nosotros vamos, golpeamos la puerta en crea. Le golpeamos la puerta a la sociedad rural. Le golpeamos la puerta a pinta, le contamos. le golpeamos la puerta inta, yo tengo varios ingenieros agrónomo que nos puedan ayudar en
+34:11 Arturo Herrera: Y que son científicos ellos ahí tienen datos, posta los que ayudan ya que
+34:12 Leonardo Feas: Le golpeamos la puerta. Ellos son tipo y son muy serios.
+34:18 Arturo Herrera: ayudan servicios a los campos constantemente porque ellos los ayudan justamente con cosas tecnológicas.
+34:26 Leonardo Feas: Justamente entonces por eso mismo te digo. Por eso mismo les digo. A mí me parece realmente una súper oportunidad. paso súper oportunidad
+34:41 Arturo Herrera: Bueno me parece bien, yo te digo con toda esta información Denme unos días y les voy a ir mostrando, quiero que tenemos Y qué resumen y y armo un mapa de a ver si
+35:03 Arturo Herrera: coincide como es el modelo de negocio, que cosas técnicas y que Qué información vamos a necesitar de melodías que todo esto lo
+35:16 Leonardo Feas: Yo lo único que les voy a pedir a los dos y yo me conocen eso esta información Estas ideas no lo aceptemos Charlando con todo el mundo.
+35:28 Arturo Herrera: no
+35:30 Emmanuel Rubado: espectacular
+35:31 Leonardo Feas: es lo único es lo único que les pido porque hay algunos que son verdaderamente Tigres Y no van a fumar, yo no te digo que somos los únicos que estemos pensando en
+35:38 Emmanuel Rubado: Dale
+35:41 Leonardo Feas: esto lo que digo es no abramos el juego todavía.
+35:43 Arturo Herrera: No, nada, estoy comentando cero. vamos callado porque, o sea hoy en día, cualquiera se viva y
+35:57 Leonardo Feas: Y otra cosa que que yo te pido a vos Emma porque es un tipo que yo a los dos los quiero mucho No pero con Emma tengo así como es un tipo muy perceptivo, es un tipo que tiene. que tiene este una inteligencia articular para mí y lo que te digo Emma es Challenjame cada pelotudez o cada cosa que diga.
+36:22 Emmanuel Rubado: Bueno dale dale
+36:24 Leonardo Feas: Yo necesito a alguien que me que me que me challense que me esté diciendo Y esto y Y por qué Y por qué? Y que necesito alguien que me obligue a seguir pensando porque a veces me quedo en una capa que tengo que volver a profundizar Okay Arthur a vos, no, ni te lo digo porque ya hemos trabajado juntos mucho.
+36:37 Emmanuel Rubado: bueno
+36:42 Arturo Herrera: Vamos a sacar el mejor producto que podamos y todo esto que vos me contás Sí vamos a vamos a cotejarlo con realmente con lo que es posible y la idea Está Así que hay que bajarlo a algo más. Más más concreto y de ahí vamos peleando el agua a ver para echarletear
+37:06 Leonardo Feas: y después si
+37:10 Arturo Herrera: también va a ser la dimensión del proyecto también que le agregamos y que dejamos O sea a ver va a haber un montón de etapas en donde vamos a tener que tomar decisiones de acuerdo.
+37:21 Leonardo Feas: Hay yo no tengo drama Solo tengo drama. No ustedes me conocen a mí me gusta ir para adelante, si tenemos que dejar algo atrás para seguir yendo para adelante, dejemos algo de costado que no nos pese Es preferible ir para adelante y después retomar lo que quedó atrás Que quedarse siempre en un mismo lugar que no avanza.
+37:43 Emmanuel Rubado: perfecto
+37:46 Arturo Herrera: Va a ser un monstruo, pero vamos a dividirlo en un par de un par de de módulos concretos y veamos como viste en la actividad sís, hoy Bueno a ver cuál es el cuál es el módulo que tiene más más rápido de sacar que tiene más valor. Y que es menos costoso, no detectar Bueno qué módulos son?
+38:09 Leonardo Feas: Después yo no lo veo como no lo veo como módulos. Eh, lo rico de esto es que no lo veas como módulos. A lo mejor te quedas sin una aeroplicación y la tercerizas.
+38:23 Arturo Herrera: No no es un módulo yo lo que te digo es un módulo, es algo que resuelva algo concreto y que le dé valor al al que lo puedes poner en funcionamiento de información que se puede aplicar que se pueda salir a producción y que te lo compren porque vos capaz como es como están todos productos, hay productos de suscripción free, hay productos Premium o sea, depende lo que depende de tu capacidad de pago y de tu tamaño.
+38:54 Leonardo Feas: Pero no te enojas, No te enojas, estás yendo demasiado al final de la carrera todavía no pienses, no lo
+39:00 Arturo Herrera: No no estoy pensando, estoy pensando en algo que podemos implementar en etapas y que no tengamos que esperar dos años para recién ver el producto terminado implementado.
+39:07 Leonardo Feas: Por eso te Por eso te digo, no pienses. A mí me pasan cosas a veces y es quiero tener la idea. De Qué cosas necesito para poder tener algo hoy todavía yo yo honestamente no tengo en claro Cuáles son todos los procesos que tiene una siembra. porque no los conozco desde la
+39:33 Arturo Herrera: Vamos a ver, vamos primero el negocio y después vamos a ver cómo lo soporta la tecnología.
+39:42 Leonardo Feas: Y en cada momento vos vas a tener dos variables uno que es cómo le mejoras,
+39:42 Arturo Herrera: Vamos a tener el negocio primero.
+39:49 Leonardo Feas: cómo le haces ahorrar y cómo le mejorar la productividad siempre tenés esas dos variables siempre.
+39:56 Arturo Herrera: Está clarísimo eso sí.
+39:57 Leonardo Feas: Entonces, Cuáles son las variables que mejoran productividad y cuáles son las variables que generan ahorro en cada etapa del proceso. Pero bueno nada Y cómo haces para establecer para conocer métricas de esas
+40:14 Arturo Herrera: Bien.
+40:18 Leonardo Feas: variables Por ejemplo para que una planta crezca vos que necesitas agua temperatura. No sé. Me seguís y después si vos decís Che este año va a venir muy lluvioso y con calor. Mirando para adelante, no digo bueno, a ver, voy a plantar, no sé. trigo fenómeno si el verano 2025 20 26 es muy lluvioso con mucho calor Cuál es la tendencia natural que suceda que el grano sea más grande que por el calor a humedad tenga más bichos que Creo que es Ahí está en la explotación de datos y la proyección de situaciones y lo ayudas al tipo a prepararse. Para mí hay por ahí, vas enganchándolo al tipo.
+41:24 Leonardo Feas: Y la verdad es que las primeras veces Nos va a costar venderlo Esto va a tener que ser casi en asociación con el inta en asociación con crea, me entendés donde los tipos de una manera. Te sponsoren Y vos vayas mejorando los modelos. Y entonces después en un año o en dos o en tres decís Mirá mi modelo tan perfectamente alineados.
+41:57 Emmanuel Rubado: Bueno chicos si quieren lo pasamos en limpio eso y cuándo nos acompañamos de vuelta?
+42:05 Leonardo Feas: Cuando ustedes digan chicos, no sé cuándo pueden.
+42:07 Arturo Herrera: Ahora de yo me tengo que bajar ahora tiramos tenemos ahí en el en el grupo y cerramos la el día y hora.
+42:17 Leonardo Feas: Listo, un beso Gracias chao, chao.
+42:17 Emmanuel Rubado: Dale
+42:21 Arturo Herrera: esos muchachos
+  
