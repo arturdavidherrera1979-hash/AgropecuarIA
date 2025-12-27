@@ -2,7 +2,7 @@
 
 **Repo:** https://github.com/arturdavidherrera1979-hash/dronia  
 **Branch principal:** `main`  
-**Actualizado:** 2025-12-27
+**Actualizado:** 2025-12-26
 
 ## ✅ Instrucciones “4 líneas” (para rehidratar en un chat nuevo)
 
@@ -56,14 +56,6 @@ Servicio integral de agricultura de precisión que combina operación con drones
 ---
 
 ## 4) Estado actual (llenar y mantener)
-
-### Minutas (para estado real del proyecto)
-Para obtener el **estado actual** (qué se avanzó, decisiones y próximos pasos), pedimos que el equipo:
-- Suba las **minutas más recientes** al repo en `meetings/` (o las adjunte en el chat si todavía no están en el repo).
-- Ideal: una minuta por reunión con fecha, decisiones y acciones.
-- Luego, solicitar: “Leé las últimas minutas y actualizá la sección *Estado actual* de este bootstrap”.
-
-
 **Salud general:** 🟢 / 🟡 / 🔴 (elegir)
 
 **Qué está funcionando hoy**
