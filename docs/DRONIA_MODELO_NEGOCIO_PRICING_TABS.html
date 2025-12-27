@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DRONIA — Modelo de negocio + Pricing (Sudamérica)</title>
+  <style>
+
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1630;
+      --card:#111b3a;
+      --text:#e8ecff;
+      --muted:#b9c1ff;
+      --line:rgba(255,255,255,.12);
+      --good:#28d17c;
+      --warn:#ffcc66;
+      --bad:#ff5c7a;
+      --accent:#7aa2ff;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 12px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(122,162,255,.20), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(40,209,124,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 18px 44px;
+    }
+    header{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 26px 18px 12px;
+    }
+    .kicker{
+      color:var(--muted);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.85rem;
+    }
+    h1{
+      margin:10px 0 8px;
+      font-size: clamp(1.55rem, 2.5vw, 2.4rem);
+      line-height:1.15;
+    }
+    .subtitle{
+      color:var(--muted);
+      max-width: 90ch;
+      margin:0 0 12px;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 12px 0 6px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      font-size:.93rem;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    /* Tabs */
+    .tabs{
+      border:1px solid var(--line);
+      background: rgba(17,27,58,.7);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 10px;
+      margin: 12px 0 16px;
+    }
+    .tablist{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    [role="tab"]{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-size:.95rem;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+      transition: transform .06s ease, background .15s ease, border-color .15s ease, color .15s ease;
+      outline:none;
+    }
+    [role="tab"]:hover{ background: rgba(255,255,255,.06); }
+    [role="tab"]:active{ transform: translateY(1px); }
+    [role="tab"][aria-selected="true"]{
+      color: #08102a;
+      background: rgba(122,162,255,.95);
+      border-color: rgba(122,162,255,.95);
+      font-weight: 800;
+    }
+    [role="tab"]:focus-visible{
+      box-shadow: 0 0 0 3px rgba(122,162,255,.35);
+    }
+
+    .panels{ margin-top: 12px; }
+    [role="tabpanel"]{ display:none; }
+    [role="tabpanel"][data-active="true"]{ display:block; }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr;}
+    }
+
+    /* Cards & callouts */
+    .card{
+      border:1px solid var(--line);
+      background: rgba(17,27,58,.75);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 14px 12px;
+    }
+    .card h2{ margin: 0 0 10px; font-size: 1.18rem; }
+    .card h3{ margin: 14px 0 8px; font-size: 1.03rem; color: #f0f3ff; }
+    .callout{
+      border-radius: var(--radius);
+      padding: 12px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      margin: 10px 0 12px;
+    }
+    .callout strong{color:#fff}
+    .good{border-color: rgba(40,209,124,.35); background: rgba(40,209,124,.08);}
+    .warn{border-color: rgba(255,204,102,.35); background: rgba(255,204,102,.08);}
+    .bad{border-color: rgba(255,92,122,.35); background: rgba(255,92,122,.08);}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: .92rem;
+      letter-spacing:.01em;
+      margin-bottom: 8px;
+    }
+    .badge.good{color:#0c281a;}
+    .badge.warn{color:#3a2500;}
+    .badge.bad{color:#33000a;}
+
+    ul{margin: 8px 0 10px 18px; color: var(--muted);}
+    li{margin: 6px 0;}
+    .mini{ font-size:.93rem; color: var(--muted); }
+    code, pre{ font-family:var(--mono); font-size: .92rem; }
+    pre{
+      white-space:pre-wrap;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      padding: 10px 10px;
+      color:#f0f3ff;
+      overflow:auto;
+    }
+
+    .table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      margin-top: 10px;
+    }
+    .table th, .table td{
+      padding: 10px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    .table th{
+      text-align:left;
+      color:#fff;
+      background: rgba(255,255,255,.04);
+      font-size:.95rem;
+    }
+    .table tr:last-child td{border-bottom:0;}
+
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      background: rgba(255,255,255,.03);
+      margin: 10px 0;
+    }
+    summary{
+      cursor:pointer;
+      color:#fff;
+      font-weight:800;
+    }
+
+    .sticky .card{ position: sticky; top: 14px; }
+    @media (max-width: 980px){
+      .sticky .card{ position: static; }
+    }
+
+    .tag{
+      display:inline-block;
+      padding: 3px 8px;
+      border-radius:999px;
+      font-size:.85rem;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      margin-right: 6px;
+      margin-top: 6px;
+      white-space:nowrap;
+    }
+
+    .footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size:.92rem;
+    }
+
+    /* Print */
+    @media print{
+      body{ background:#fff; color:#000; }
+      header, .wrap{ max-width: none; }
+      .tabs, .sticky{ display:none !important; }
+      .card{ box-shadow:none; background:#fff; border:1px solid #ddd; }
+      a{ color:#000; text-decoration:underline; }
+    }
+
+    /* Extras mínimos (sin romper template) */
+    .footnotes ol{ margin: 8px 0 0 18px; }
+    .footnotes li{ margin: 6px 0; }
+    .hl{ display:inline-block; padding:2px 8px; border-radius:999px; background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); }
+    .money{ font-variant-numeric: tabular-nums; }
+    .tight ul{ margin: 6px 0 10px 18px; }
+    .kpi{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .kpi .pill{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); }
+    .note{ font-size:.92rem; color: var(--muted); }
+  
+    /* === CONTRASTE FIX (2025-12-27) ===
+       Evitar texto verde/rojo sobre fondo azul: mantenemos semántica con borde/fondo,
+       pero forzamos el texto a claro/legible.
+    */
+    .good, .bad, .warn,
+    .good *, .bad *, .warn *,
+    .kpi .good, .kpi .bad, .kpi .warn{
+      color: var(--text) !important;
+      text-shadow: none !important;
+    }
+
+
+    .pos, .neg, .ok, .danger, .success, .error{
+      color: var(--text) !important;
+    }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="sticky">
+      <div class="kicker">DRONIA / Negocio</div>
+      <h1>Modelo comercial recomendado + Pricing Sheet</h1>
+      <p class="subtitle">
+        Enfoque Argentina/Sudamérica — <span class="hl">SaaS + Red de operadores + Add-ons de prescripción</span>
+        <span class="mini">Actualizado: 2025-12-27</span>
+      </p>
+
+      <div class="tablist" role="tablist" aria-label="Secciones">
+        <button role="tab" aria-selected="true" aria-controls="panel-resumen" id="tab-resumen" tabindex="0">🧭 Resumen</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-modelo" id="tab-modelo" tabindex="-1">🧩 Modelo recomendado</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-segmentos" id="tab-segmentos" tabindex="-1">🎯 Segmentos</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-pricing" id="tab-pricing" tabindex="-1">💸 Pricing Sheet</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-unit" id="tab-unit" tabindex="-1">📈 Unit economics</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-riesgos" id="tab-riesgos" tabindex="-1">⚠️ Riesgos</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-fuentes" id="tab-fuentes" tabindex="-1">🔎 Fuentes</button>
+      </div>
+    </header>
+
+    <div class="panels">
+
+      <!-- RESUMEN -->
+      <section role="tabpanel" id="panel-resumen" aria-labelledby="tab-resumen" data-active="true">
+        <div class="grid">
+          <div class="card">
+            <div class="badge good">✅ Decisión recomendada</div>
+            <h2>SaaS + red de operadores + add-ons (prescripción / informes)</h2>
+            <p>
+              El core de DronIA debe ser <b>software recurrente</b> (móvil/offline) y el dron debe entrar como
+              <b>servicio opcional</b> (vuelos tercerizados) para acelerar adopción y demostrar ROI.
+            </p>
+
+            <div class="callout good">
+              <strong>Por qué esta combinación maximiza rentabilidad</strong>
+              <ul>
+                <li><b>El mercado ya compra “software por ha”</b> (suscripción por superficie) y también compra <b>servicios por ha</b> (vuelo + procesamiento).</li>
+                <li>El <b>margen del software escala</b>; la operación de vuelo no. Por eso conviene “operadores partner”.</li>
+                <li>La venta se destraba cuando el productor ve un <b>ahorro directo</b> (insumos / aplicaciones selectivas / agua).</li>
+              </ul>
+              <p class="mini">
+                Evidencia de precios y formato “producto + servicio” en Argentina: ver fuentes [1] y caso ROI [2].
+              </p>
+            </div>
+
+            <h3>¿Dónde está la ventaja económica?</h3>
+            <ul>
+              <li><b>Para DronIA:</b> ingresos recurrentes + upsell de prescripción + baja logística.</li>
+              <li><b>Para el cliente:</b> ahorro de insumos y aplicaciones innecesarias, y mejor decisión por zonas.</li>
+            </ul>
+
+            <div class="kpi">
+              <span class="pill"><b>Benchmark</b>: Mapeo de malezas FULL <span class="money">US$6,50/ha</span></span>
+              <span class="pill"><b>Benchmark</b>: Procesamiento <span class="money">US$3,00/ha</span></span>
+              <span class="pill"><b>Benchmark</b>: SaaS visualización <span class="money">US$0,50/ha</span> (180 días)</span>
+            </div>
+            <p class="mini">Benchmarks extraídos del pricing de Xarvio Argentina (fuente [1]).</p>
+          </div>
+
+          <div class="card">
+            <div class="badge warn">🎯 Qué cambia según el tamaño de cliente</div>
+            <h2>Un producto, tres empaquetados</h2>
+            <p class="mini">Misma plataforma, distintos “paquetes comerciales” para minimizar fricción y maximizar ticket.</p>
+
+            <div class="callout">
+              <strong>Pequeños</strong>
+              <p>Entrada barata + servicio por campaña. Evitar CAPEX y “fricción tecnológica”.</p>
+            </div>
+
+            <div class="callout">
+              <strong>Medianos</strong>
+              <p>Precio por ha + prescripción por campaña. “Land &amp; expand” con ROI en 1 ciclo.</p>
+            </div>
+
+            <div class="callout">
+              <strong>Grandes</strong>
+              <p>Contrato anual + SLA + integración (GIS/ERP) + gobernanza de datos.</p>
+            </div>
+
+            <div class="callout good">
+              <strong>Evidencia de que el agro paga suscripción</strong>
+              <p class="mini">
+                Ejemplo regional: MIIDO basa su modelo en suscripción anual por campo (~<span class="money">US$1.500</span>) (fuente [3]).
+                Otro patrón típico: planes “por campo por mes” y Enterprise “contacto ventas” (fuente [5]).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card footnotes">
+          <h2>Notas / referencias rápidas</h2>
+          <ol>
+            <li>[1] Pricing Argentina (software por ha + servicios de vuelo/procesamiento): Xarvio Field Manager (ver tab “Fuentes”).</li>
+            <li>[2] Caso ROI: ahorro de <span class="money">US$2038</span> (-71% herbicida) usando mapeo selectivo con drones (ver tab “Fuentes”).</li>
+            <li>[3] Suscripción anual por campo (ejemplo Chile): MIIDO (ver tab “Fuentes”).</li>
+            <li>[4] “Agricultura de Precisión como Servicio” (PAaaS) con hardware + acompañamiento en LatAm: Instacrops (ver tab “Fuentes”).</li>
+            <li>[5] Patrón SaaS “por campo por mes” + Enterprise “hablar con ventas”: aydi (ver tab “Fuentes”).</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- MODELO -->
+      <section role="tabpanel" id="panel-modelo" aria-labelledby="tab-modelo">
+        <div class="grid">
+          <div class="card tight">
+            <div class="badge good">🧩 Arquitectura comercial</div>
+            <h2>Core SaaS + Add-ons + Operadores (sin volverse “empresa de logística”)</h2>
+            <h3>1) Core (SaaS)</h3>
+            <ul>
+              <li>App móvil (offline-first) + carga simple + historial por lote.</li>
+              <li>Capas: clima / satélite / vuelos drone / “zonas” y alertas.</li>
+              <li>Reportes accionables: “qué hacer, dónde y cuándo”.</li>
+            </ul>
+
+            <h3>2) Add-ons de alto margen (software)</h3>
+            <ul>
+              <li>Prescripciones (riego / fertilización / malezas / priorización de recorridas).</li>
+              <li>Comparativos por campaña y benchmarking.</li>
+              <li>Paquetes “cumplimiento” (trazabilidad, auditoría, reportes).</li>
+            </ul>
+
+            <h3>3) Add-ons operativos (vuelos)</h3>
+            <ul>
+              <li><b>Red de operadores certificados</b> (partners): ustedes “orquestan” y aseguran calidad.</li>
+              <li>Opción BYOD: si el cliente tiene drone, ustedes cobran <b>procesamiento</b> (benchmark ver [1]).</li>
+            </ul>
+
+            <div class="callout warn">
+              <strong>Regla de oro</strong>
+              <p class="mini">
+                Mantener la logística como “opt-in”. El core tiene que escalar sin crecer linealmente en personas/camionetas.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="badge">📌 Justificación con evidencia</div>
+            <h2>¿Por qué este modelo es realista en Argentina?</h2>
+            <p>
+              Porque el mercado ya muestra <b>dos patrones simultáneos</b>:
+            </p>
+            <ul>
+              <li><b>Pago por ha</b> para software y módulos (visualización / prescripción) — ver [1].</li>
+              <li><b>Pago por ha</b> para servicio (vuelo + procesamiento) y también “solo procesamiento” — ver [1].</li>
+            </ul>
+            <p class="mini">
+              Eso valida que DronIA ofrezca: <b>SaaS</b> + <b>servicios opcionales</b> + <b>BYOD</b>.
+            </p>
+
+            <div class="callout good">
+              <strong>El ROI es el motor de la venta</strong>
+              <p class="mini">
+                En un caso público, el mapeo selectivo con drone redujo el costo total de control de malezas
+                de <span class="money">US$3.300</span> a <span class="money">US$1.270</span> (ahorro <span class="money">US$2.038</span>) (ver [2]).
+              </p>
+            </div>
+
+            <div class="callout">
+              <strong>Patrón regional: “as a service”</strong>
+              <p class="mini">
+                Instacrops describe PAaaS como suscripción anual de software + hardware + instalación y acompañamiento
+                (ver [4]). Esto es útil para medianos y grandes que quieren “todo resuelto”.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGMENTOS -->
+      <section role="tabpanel" id="panel-segmentos" aria-labelledby="tab-segmentos">
+        <div class="card">
+          <div class="badge good">🎯 Segmentación</div>
+          <h2>Cómo vender sin mezclar necesidades</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Segmento</th>
+                <th>Qué le importa</th>
+                <th>Qué se le vende</th>
+                <th>Cómo se cobra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Pequeño</b></td>
+                <td>Simplicidad, precio, “que funcione sin señal”.</td>
+                <td><b>Starter SaaS</b> + <b>servicio por campaña</b> (opcional).</td>
+                <td>Por <b>campo/mes</b> + add-on por ha cuando pide vuelo.</td>
+              </tr>
+              <tr>
+                <td><b>Mediano</b></td>
+                <td>ROI por insumo/agua, decisiones por zonas.</td>
+                <td><b>Pro por ha/año</b> + prescripción por campaña + BYOD procesamiento.</td>
+                <td>Por <b>ha activa</b> + add-ons (benchmark de mercado en [1]).</td>
+              </tr>
+              <tr>
+                <td><b>Grande</b></td>
+                <td>Gobernanza, SLA, integración (GIS/ERP), auditoría.</td>
+                <td><b>Enterprise</b> (multi-establecimiento) + integración + soporte.</td>
+                <td>Fee anual + implementación + variable por volumen.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>Mensaje comercial por segmento (rápido)</strong>
+            <ul>
+              <li><b>Pequeño:</b> “Pagás poco, ves ahorro rápido, sin comprar drone”.</li>
+              <li><b>Mediano:</b> “Pagás por ha y recuperás con insumos/agua y aplicaciones selectivas”.</li>
+              <li><b>Grande:</b> “Menos riesgo operativo: SLA + datos auditables + integración”.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section role="tabpanel" id="panel-pricing" aria-labelledby="tab-pricing">
+        <div class="grid">
+          <div class="card">
+            <div class="badge good">💸 Pricing Sheet (propuesto)</div>
+            <h2>Precios sugeridos por segmento</h2>
+            <p class="mini">
+              Los valores de referencia “por ha” y servicios de mapeo se apoyan en benchmarks públicos de Argentina (Xarvio) [1]
+              y casos ROI [2]. Los valores Enterprise son rangos típicos de software B2B con SLA en la región (a validar por discovery comercial).
+            </p>
+
+            <h3>Pequeño — Starter</h3>
+            <table class="table">
+              <thead><tr><th>Ítem</th><th>Precio sugerido</th><th>Notas</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><b>SaaS Starter</b> (1 campo / hasta X lotes)</td>
+                  <td class="money"><b>US$ 19–49 / mes</b> (o anual con 15% off)</td>
+                  <td>Precio “fácil de pagar”, orientado a adopción. Offline-first.</td>
+                </tr>
+                <tr>
+                  <td><b>Vuelo + Informe</b> (partner)</td>
+                  <td class="money">Benchmark: <b>US$ 6,50/ha</b></td>
+                  <td>Referencia pública (Xarvio Argentina) [1]. Recomendar mínimo por salida.</td>
+                </tr>
+                <tr>
+                  <td><b>Solo procesamiento</b> (cliente aporta imágenes)</td>
+                  <td class="money">Benchmark: <b>US$ 3,00/ha</b></td>
+                  <td>Modelo BYOD (Xarvio) [1] — alto margen, baja fricción.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Mediano — Pro</h3>
+            <table class="table">
+              <thead><tr><th>Paquete</th><th>Precio sugerido</th><th>Referencia / objetivo</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><b>Pro Visualización</b> (zonas, comparativos, monitoreo)</td>
+                  <td class="money"><b>US$ 1,0–2,0 / ha / año</b></td>
+                  <td>Benchmark público: <span class="money">US$0,50/ha</span> por 180 días (≈ US$1/ha/año) [1].</td>
+                </tr>
+                <tr>
+                  <td><b>Prescripción</b> (nutrición / siembra variable)</td>
+                  <td class="money"><b>US$ 2,0–3,5 / ha / año</b></td>
+                  <td>Benchmark público: <span class="money">US$1,20/ha</span> por 180 días (≈ US$2,4/ha/año) [1].</td>
+                </tr>
+                <tr>
+                  <td><b>Bundle Pro+</b> (visualización + prescripción + alertas)</td>
+                  <td class="money"><b>US$ 3,0–5,0 / ha / año</b></td>
+                  <td>Objetivo: que el ROI sea “obvio” en 1 campaña (usar caso [2]).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Grande — Enterprise</h3>
+            <table class="table">
+              <thead><tr><th>Ítem</th><th>Rango sugerido</th><th>Qué incluye</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><b>Plataforma + SLA</b> (anual)</td>
+                  <td class="money"><b>US$ 40k–150k / año</b></td>
+                  <td>Multi-establecimiento, roles, auditoría, soporte, roadmap acordado.</td>
+                </tr>
+                <tr>
+                  <td><b>Implementación</b> (one-time)</td>
+                  <td class="money"><b>US$ 15k–80k</b></td>
+                  <td>Integraciones (GIS/ERP), onboarding, capacitación, datos históricos.</td>
+                </tr>
+                <tr>
+                  <td><b>Variable por volumen</b></td>
+                  <td class="money"><b>US$ 0,5–2,5 / ha / año</b></td>
+                  <td>Se negocia por escala; alinea valor con superficie/uso.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="note">
+              Nota: Para Enterprise, es normal “Contact Sales” y pricing a medida; ejemplo público: aydi muestra planes y Enterprise por contacto [5].
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="badge">🧮 Ejemplos rápidos (para vender)</div>
+            <h2>Ejemplo de ROI (narrativa comercial)</h2>
+            <p>
+              Caso público de control de malezas: al mapear con drone y aplicar selectivo, el costo total baja de
+              <span class="money">US$3.300</span> a <span class="money">US$1.270</span>, con ahorro
+              <span class="money">US$2.038</span> (–71% en herbicida) [2].
+            </p>
+
+            <div class="callout good">
+              <strong>Cómo lo usás en un pitch</strong>
+              <ul>
+                <li>“Te cobro X, pero el ahorro típico es Y (y tenemos casos públicos).”</li>
+                <li>“Si tenés drone, te cobro solo procesamiento (alto margen, rápido).”</li>
+                <li>“Si no tenés, te conecto con un operador y te entrego el informe accionable.”</li>
+              </ul>
+            </div>
+
+            <div class="callout warn">
+              <strong>Regla de pricing</strong>
+              <p class="mini">
+                Si el cliente no ve ROI en 1 campaña, el pricing está mal o el “caso de uso” elegido no es el correcto.
+              </p>
+            </div>
+
+            <h3>Opciones de empaquetado “as a service”</h3>
+            <p class="mini">
+              En LatAm se usa el concepto “Agricultura de Precisión como Servicio” (PAaaS) — suscripción anual + hardware + acompañamiento [4].
+              Esto es útil como oferta Enterprise/mediana cuando el cliente quiere “todo incluido”.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- UNIT ECONOMICS -->
+      <section role="tabpanel" id="panel-unit" aria-labelledby="tab-unit">
+        <div class="grid">
+          <div class="card">
+            <div class="badge good">📈 Cómo proteger margen</div>
+            <h2>Unit economics: dónde se gana y dónde se pierde</h2>
+            <h3>Alta rentabilidad (en general)</h3>
+            <ul>
+              <li><b>SaaS por ha / por campo</b>: costo marginal bajo, escala bien.</li>
+              <li><b>Procesamiento BYOD</b>: alto margen (cobrás por ha, el compute es relativamente bajo).</li>
+              <li><b>Prescripción / reportes</b>: valor percibido alto y repetible por campaña.</li>
+            </ul>
+
+            <h3>Riesgo de margen</h3>
+            <ul>
+              <li>Servicios de vuelo propios: logística + mantenimiento + estacionalidad.</li>
+              <li>“Consultoría infinita” en Enterprise sin cobrar implementación.</li>
+              <li>Soporte manual no escalable.</li>
+            </ul>
+
+            <div class="callout">
+              <strong>Objetivos sugeridos</strong>
+              <ul>
+                <li><b>Gross margin SaaS:</b> 70–90% (a medida que crece base de clientes)</li>
+                <li><b>Gross margin procesamiento BYOD:</b> 60–85% (según pipeline y storage)</li>
+                <li><b>Servicios de vuelo (partner):</b> margen como “fee de orquestación” (10–25%)</li>
+              </ul>
+              <p class="mini">Estos rangos son metas internas típicas; se validan con costos reales de nube y operación.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="badge">🛠️ Palancas concretas</div>
+            <h2>Palancas para aumentar rentabilidad sin subir precio</h2>
+            <ul>
+              <li><b>Automatizar pipeline</b>: ingestión → QA → ortomosaico → índices → reporte.</li>
+              <li><b>Upsell por valor</b>: de “mapa” a “decisión” (prescripción y seguimiento).</li>
+              <li><b>Precios por “ha activa”</b>: cobrar sólo lo que el cliente realmente usa.</li>
+              <li><b>Bundles por campaña</b>: disminuye churn estacional.</li>
+            </ul>
+
+            <div class="callout good">
+              <strong>Señal de producto sano</strong>
+              <p class="mini">
+                El cliente vuelve solo para “ver el mapa” y termina pagando por “hacer algo mejor”.
+              </p>
+            </div>
+
+            <div class="callout warn">
+              <strong>Señal de producto riesgoso</strong>
+              <p class="mini">
+                Todo requiere intervención humana. Ese camino es caro, lento y poco escalable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIESGOS -->
+      <section role="tabpanel" id="panel-riesgos" aria-labelledby="tab-riesgos">
+        <div class="card">
+          <div class="badge warn">⚠️ Riesgos y límites (incluye partners)</div>
+          <h2>Riesgos clave y mitigación</h2>
+          <h3>Operación (vuelos)</h3>
+          <ul>
+            <li><b>Riesgo:</b> logística y estacionalidad comen margen.</li>
+            <li><b>Mitigación:</b> red de operadores + mínimos por salida + SLA operativo.</li>
+          </ul>
+
+          <h3>Lock-in / partners grandes</h3>
+          <ul>
+            <li><b>Riesgo:</b> depender de un proveedor que intente “adueñarse” del producto.</li>
+            <li><b>Mitigación:</b> contratos: el producto y los datos (y los modelos) son de DronIA; el partner es “proveedor” o “canal”.</li>
+          </ul>
+
+          <h3>Datos y privacidad</h3>
+          <ul>
+            <li><b>Riesgo:</b> información sensible (rendimientos, prácticas, ubicación).</li>
+            <li><b>Mitigación:</b> políticas claras, permisos por rol, exportabilidad, y acuerdos de uso.</li>
+          </ul>
+
+          <h3>ROI no evidente</h3>
+          <ul>
+            <li><b>Riesgo:</b> churn al finalizar campaña si el valor no es tangible.</li>
+            <li><b>Mitigación:</b> vender “casos” primero (malezas, agua, estrés) con métrica y comparar vs baseline. Usar casos públicos como narrativa (ej. [2]).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FUENTES -->
+      <section role="tabpanel" id="panel-fuentes" aria-labelledby="tab-fuentes">
+        <div class="card">
+          <div class="badge">🔎 Fuentes usadas</div>
+          <h2>Fuentes públicas (para sostener pricing y modelo)</h2>
+          <p class="mini">Links directos. Se citan como [1], [2], etc. dentro del documento.</p>
+
+          <table class="table">
+            <thead><tr><th>#</th><th>Fuente</th><th>Qué respalda</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>[1]</td>
+                <td><a href="https://www.xarvio.com/ar/es/pricing/precios.html" target="_blank" rel="noopener">Xarvio Argentina — Precios</a></td>
+                <td>Benchmarks: <span class="money">US$0,50/ha</span> (visualización, 180 días), <span class="money">US$1,20/ha</span> (nutrición/siembra variable, 180 días), mapeo malezas FULL <span class="money">US$6,50/ha</span>, procesamiento <span class="money">US$3,00/ha</span>.</td>
+              </tr>
+              <tr>
+                <td>[2]</td>
+                <td><a href="https://agroempresario.com/publicacion/77962/experiencia-aerea-como-ahorrar-mas-de-us-2000-para-controlar-malezas-en-un-lote-de-87-hectareas" target="_blank" rel="noopener">Agroempresario — caso DroneScope (malezas)</a></td>
+                <td>Ejemplo de ROI: ahorro <span class="money">US$2.038</span> (–71% herbicida) en 87 ha con aplicación selectiva.</td>
+              </tr>
+              <tr>
+                <td>[3]</td>
+                <td><a href="https://startupslatam.com/miido-la-agtech-que-facilita-la-recoleccion-de-datos-agricolas-a-traves-de-la-voz/" target="_blank" rel="noopener">Startups Latam — MIIDO</a></td>
+                <td>Ejemplo regional de suscripción anual por campo (~<span class="money">US$1.500</span>).</td>
+              </tr>
+              <tr>
+                <td>[4]</td>
+                <td><a href="https://www.agronegocios.co/agricultura/instacrops-lanzo-modelo-que-ofrece-suscripcion-anual-de-un-software-para-agricultores-3341153" target="_blank" rel="noopener">Agronegocios — Instacrops PAaaS</a></td>
+                <td>Patrón “agricultura de precisión como servicio”: suscripción anual + hardware + acompañamiento.</td>
+              </tr>
+              <tr>
+                <td>[5]</td>
+                <td><a href="https://www.aydi.com/es/pricing" target="_blank" rel="noopener">aydi — Pricing</a></td>
+                <td>Patrón SaaS por campo/mes + Enterprise “Contactar ventas”.</td>
+              </tr>
+              <tr>
+                <td>[6]</td>
+                <td><a href="https://www.aeroterra.com/es-ar/productos/index" target="_blank" rel="noopener">Aeroterra (Esri) — Productos ArcGIS</a></td>
+                <td>Contexto de partner GIS en Argentina/Uruguay (integraciones Enterprise).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>Nota importante</strong>
+            <p class="mini">
+              Los benchmarks de [1] y el caso [2] sirven para justificar <b>rangos</b> y <b>narrativa de ROI</b>.
+              El pricing final de DronIA debe validarse con pilotos (pequeño/mediano) y 3–5 entrevistas de compra Enterprise.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- panels -->
+
+    <div class="footer">
+      <div class="mini">
+        Documento generado para DRONIA. Contenido de pricing es una recomendación basada en benchmarks públicos y buenas prácticas comerciales en AgTech.
+      </div>
+    </div>
+
+    <script>
+
+    (function(){
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+      function activateTab(tab, {focus=true, updateHash=true} = {}){
+        const targetId = tab.getAttribute('aria-controls');
+        const target = document.getElementById(targetId);
+
+        tabs.forEach(t => {
+          const selected = (t === tab);
+          t.setAttribute('aria-selected', selected ? 'true' : 'false');
+          t.tabIndex = selected ? 0 : -1;
+        });
+
+        panels.forEach(p => {
+          p.dataset.active = (p === target) ? 'true' : 'false';
+        });
+
+        if(updateHash){
+          // Use panel id as hash (deep link)
+          history.replaceState(null, '', '#' + targetId);
+        }
+        if(focus){ tab.focus(); }
+      }
+
+      function getTabByPanelId(panelId){
+        return tabs.find(t => t.getAttribute('aria-controls') === panelId) || null;
+      }
+
+      // Click handling
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (e) => {
+          const idx = tabs.indexOf(tab);
+          let nextIdx = null;
+
+          if(e.key === 'ArrowRight') nextIdx = (idx + 1) % tabs.length;
+          if(e.key === 'ArrowLeft')  nextIdx = (idx - 1 + tabs.length) % tabs.length;
+          if(e.key === 'Home') nextIdx = 0;
+          if(e.key === 'End') nextIdx = tabs.length - 1;
+
+          if(nextIdx !== null){
+            e.preventDefault();
+            activateTab(tabs[nextIdx], {focus:true});
+          }
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            activateTab(tab, {focus:true});
+          }
+        });
+      });
+
+      // Load by hash
+      function applyHash(){
+        const hash = (location.hash || '').replace('#', '').trim();
+        if(!hash) return;
+        const tab = getTabByPanelId(hash);
+        if(tab) activateTab(tab, {focus:false, updateHash:false});
+      }
+
+      window.addEventListener('hashchange', applyHash);
+      
+      // Ensure one panel is visible even when no hash (first render)
+      const initiallySelected = tabs.find(t => t.getAttribute('aria-selected') === 'true') || tabs[0];
+      activateTab(initiallySelected, {focus:false, updateHash:false});
+applyHash();
+    })();
+    </script>
+  </div>
+</body>
+</html>
