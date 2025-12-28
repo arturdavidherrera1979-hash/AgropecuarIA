@@ -1,23 +1,126 @@
-﻿# AGROPECUARIA
+# AGROPECUARIA — Documentación (ex-DRONIA)
 
-Precision agriculture service (drones + sensors + AI).
+Esta carpeta (`/docs`) es la **fuente de verdad** para decisiones, supuestos, arquitectura, roadmap y definición del MVP.
 
-Vision
-- Increase profit per hectare by lowering costs and increasing productivity.
+> Nota de naming: el repositorio fue renombrado a **AGROPECUARIA**, pero varios archivos todavía conservan el prefijo **DRONIA**. Mantener consistencia en links y títulos; si se consolida el rename, renombrar archivos gradualmente.
 
-Initial deliverables
-- Business model draft (Arturo)
-- Sensor/tech research (Emmanuel)
-- Commercial plan (Leonardo)
+---
 
-Dev quickstart
-- python -m venv .venv
-- .\.venv\Scripts\Activate.ps1
-- pip install -r requirements.txt
-📄 [Abrir guía en el navegador (raw)](https://raw.githubusercontent.com/arturdavidherrera1979-hash/AgropecuarIA/main/docs/DRONIA_guia_estructura_repo_v2.html)
+## Inicio rápido (rehidratación de un chat nuevo)
 
-## Inicio rápido AI Chat GPT
-🤖 [AI Bootstrap (contexto del proyecto)](docs/DRONIA_AI_BOOTSTRAP.md)
-📘 [Guía de estructura y acceso](docs/DRONIA_guia_repo.md)
-Subirle las minutas tambien generadas para que el contexto de AI quede actualizado con el avance y estado actual del proyecto
+1) Conectar GitHub con la cuenta correcta: **`arturdavidherrera1979-hash`**  
+2) En el chat: `@github` → seleccionar repo **`arturdavidherrera1979-hash/AgropecuarIA`** (branch `main`)  
+3) Leer en este orden:
+- 🤖 **Bootstrap principal**: `docs/DRONIA_AI_BOOTSTRAP_UPDATED.md`
+- 🧭 Visión: `docs/00_vision.md`
+- 🗺 Roadmap: `docs/10_roadmap.md`
+- 🧱 Arquitectura: `docs/20_architecture.md`
+- 🧬 Modelo de datos: `docs/30_data_model.md`
+- ✅ MVP: `docs/40_mvp_definition.md`
+- 🧠 Perfil IA: `docs/DRONIA_AI_PROFILE.md`
 
+---
+
+## Índice de documentación (árbol completo de `/docs`)
+
+### Núcleo del proyecto
+- `docs/README.md` (este archivo)
+- `docs/00_vision.md`
+- `docs/10_roadmap.md`
+- `docs/20_architecture.md`
+- `docs/30_data_model.md`
+- `docs/40_mvp_definition.md`
+
+### AI / Operación de chats
+- `docs/DRONIA_AI_PROFILE.md`
+- `docs/DRONIA_AI_BOOTSTRAP.md`
+- `docs/DRONIA_AI_BOOTSTRAP_UPDATED.md`  ← **usar este como principal**
+
+### Guías del repo
+- `docs/DRONIA_guia_repo.md`
+- `docs/DRONIA_guia_estructura_repo_v2.html` (guía navegable)
+
+### Investigación y materiales de soporte (histórico útil)
+- `docs/DRONIA_GUIA_TECNOLOGIAS.md`
+- `docs/DRONIA_INFRA_COSTOS_BIG6.md`
+- `docs/DRONIA_MODELO_NEGOCIO_PRICING_TABS.html`
+
+---
+
+## Meetings (minutas y material de reuniones)
+
+Carpeta: `/meetings`
+
+- `meetings/template.md` (plantilla)
+- `meetings/minuta_reunion_11-12-2025.html`
+- `meetings/reunion_inicial.txt`
+
+Recomendación: cuando haya una minuta nueva, subirla y **linkearla desde el issue** relacionado (ej. `OPS-001`, `MVP-001`).
+
+---
+
+## Estructura del repositorio (snapshot)
+
+> Este snapshot resume el árbol actual del repo para ubicar rápido dónde está cada cosa.
+
+```
+AgropecuarIA/
+├─ README.md
+├─ Dockerfile
+├─ requirements.txt
+├─ .github/
+│  └─ workflows/
+│     └─ ci.yml
+├─ docs/
+│  ├─ README.md
+│  ├─ 00_vision.md
+│  ├─ 10_roadmap.md
+│  ├─ 20_architecture.md
+│  ├─ 30_data_model.md
+│  ├─ 40_mvp_definition.md
+│  ├─ DRONIA_AI_PROFILE.md
+│  ├─ DRONIA_AI_BOOTSTRAP.md
+│  ├─ DRONIA_AI_BOOTSTRAP_UPDATED.md
+│  ├─ DRONIA_guia_repo.md
+│  ├─ DRONIA_guia_estructura_repo_v2.html
+│  ├─ DRONIA_MODELO_NEGOCIO_PRICING_TABS.html
+│  ├─ DRONIA_GUIA_TECNOLOGIAS.md
+│  └─ DRONIA_INFRA_COSTOS_BIG6.md
+├─ meetings/
+│  ├─ template.md
+│  ├─ reunion_inicial.txt
+│  └─ minuta_reunion_11-12-2025.html
+├─ business/
+│  └─ business_model_canvas.md
+├─ commercial/
+│  ├─ pricing.md
+│  └─ go_to_market.md
+├─ hardware/
+│  ├─ drone_platforms.md
+│  └─ sensors_research.md
+├─ src/
+│  └─ dronia_core/
+│     ├─ __init__.py
+│     └─ main.py
+└─ tests/
+   └─ test_placeholder.py
+```
+
+---
+
+## Convenciones (para mantener el repo usable)
+
+- Docs **cortos**, editables y accionables.
+- Preferir **checklists** + links a Issues/PRs.
+- Decisiones no obvias → agregar una mini sección “Decision log” al doc correspondiente (fecha + motivo + tradeoff).
+- Evitar duplicación: si existe un “UPDATED”, el viejo queda como referencia o redirect.
+
+---
+
+## Pendientes recomendados (consistencia)
+
+- Consolidar naming: decidir si se renombra gradualmente `DRONIA_*` a `AGROPECUARIA_*` o se mantiene por compatibilidad.
+- Linkear desde `README.md` (raíz) hacia:
+  - `docs/DRONIA_AI_BOOTSTRAP_UPDATED.md`
+  - `docs/README.md`
+  - `meetings/minuta_reunion_11-12-2025.html`
