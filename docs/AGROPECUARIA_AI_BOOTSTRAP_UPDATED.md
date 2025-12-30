@@ -1,4 +1,4 @@
-# DRONIA / AGROPECUARIA (ex-DRONIA) — AI Bootstrap (rehidratación + GitHub)
+# AGROPECUARIA / AGROPECUARIA (ex-AGROPECUARIA) — AI Bootstrap (rehidratación + GitHub)
 
 **Repo oficial:** https://github.com/arturdavidherrera1979-hash/AgropecuarIA  
 **Branch principal:** `main`  
@@ -18,17 +18,17 @@ Este archivo está hecho para **copiar/pegar en un chat nuevo** y lograr que la 
 > Si estás leyendo esto como IA, seguí estas 4 líneas tal cual.
 
 ```text
-Proyecto: AGROPECUARIA (histórico: DRONIA)
+Proyecto: AGROPECUARIA (histórico: AGROPECUARIA)
 Repo: https://github.com/arturdavidherrera1979-hash/AgropecuarIA (branch main)
 Leé primero: README.md, docs/README.md, docs/00_vision.md, docs/10_roadmap.md, docs/20_architecture.md, docs/40_mvp_definition.md
-Luego: revisá docs/DRONIA_guia_repo.md + carpeta meetings/ + issues abiertos; devolveme estado, riesgos y próximos pasos.
+Luego: revisá docs/AGROPECUARIA_guia_repo.md + carpeta meetings/ + issues abiertos; devolveme estado, riesgos y próximos pasos.
 ```
 
 ---
 
 ## 1) Identidad del proyecto (1 párrafo)
 
-AGROPECUARIA (ex-DRONIA) es un servicio integral de agricultura de precisión que combina **operación con drones + captura de datos + análisis** para generar **insights accionables** (decisiones en campo y mejoras de rendimiento/ROI), no solamente “mapas lindos”.
+AGROPECUARIA (ex-AGROPECUARIA) es un servicio integral de agricultura de precisión que combina **operación con drones + captura de datos + análisis** para generar **insights accionables** (decisiones en campo y mejoras de rendimiento/ROI), no solamente “mapas lindos”.
 
 ---
 
@@ -57,9 +57,9 @@ AGROPECUARIA (ex-DRONIA) es un servicio integral de agricultura de precisión qu
 7) `docs/40_mvp_definition.md` — MVP y alcance  
 
 Después, leer los ejes “especializados” según el tema del chat:
-- Comercial: `commercial/go_to_market.md`, `commercial/pricing.md`, `docs/DRONIA_MODELO_NEGOCIO_PRICING_TABS.html`, `business/business_model_canvas.md`
+- Comercial: `commercial/go_to_market.md`, `commercial/pricing.md`, `docs/AGROPECUARIA_MODELO_NEGOCIO_PRICING_TABS.html`, `business/business_model_canvas.md`
 - Hardware/drones: `hardware/drone_platforms.md`, `hardware/sensors_research.md`
-- Infra/tech: `docs/DRONIA_GUIA_TECNOLOGIAS.md`, `docs/DRONIA_INFRA_COSTOS_BIG6.md`
+- Infra/tech: `docs/AGROPECUARIA_GUIA_TECNOLOGIAS.md`, `docs/AGROPECUARIA_INFRA_COSTOS_BIG6.md`
 - Operación/decisiones: `meetings/` (minutas y template)
 
 ---
@@ -87,14 +87,14 @@ AgropecuarIA/
 │  ├─ 20_architecture.md
 │  ├─ 30_data_model.md
 │  ├─ 40_mvp_definition.md
-│  ├─ DRONIA_AI_PROFILE.md
-│  ├─ DRONIA_AI_BOOTSTRAP.md
-│  ├─ DRONIA_AI_BOOTSTRAP_UPDATED.md
-│  ├─ DRONIA_guia_repo.md
-│  ├─ DRONIA_guia_estructura_repo_v2.html
-│  ├─ DRONIA_MODELO_NEGOCIO_PRICING_TABS.html
-│  ├─ DRONIA_GUIA_TECNOLOGIAS.md
-│  └─ DRONIA_INFRA_COSTOS_BIG6.md
+│  ├─ AGROPECUARIA_AI_PROFILE.md
+│  ├─ AGROPECUARIA_AI_BOOTSTRAP.md
+│  ├─ AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md
+│  ├─ AGROPECUARIA_guia_repo.md
+│  ├─ AGROPECUARIA_guia_estructura_repo_v2.html
+│  ├─ AGROPECUARIA_MODELO_NEGOCIO_PRICING_TABS.html
+│  ├─ AGROPECUARIA_GUIA_TECNOLOGIAS.md
+│  └─ AGROPECUARIA_INFRA_COSTOS_BIG6.md
 ├─ business/
 │  └─ business_model_canvas.md
 ├─ commercial/
@@ -121,14 +121,14 @@ docs/
 ├─ 20_architecture.md
 ├─ 30_data_model.md
 ├─ 40_mvp_definition.md
-├─ DRONIA_AI_PROFILE.md
-├─ DRONIA_AI_BOOTSTRAP.md
-├─ DRONIA_AI_BOOTSTRAP_UPDATED.md
-├─ DRONIA_guia_repo.md
-├─ DRONIA_guia_estructura_repo_v2.html
-├─ DRONIA_MODELO_NEGOCIO_PRICING_TABS.html
-├─ DRONIA_GUIA_TECNOLOGIAS.md
-└─ DRONIA_INFRA_COSTOS_BIG6.md
+├─ AGROPECUARIA_AI_PROFILE.md
+├─ AGROPECUARIA_AI_BOOTSTRAP.md
+├─ AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md
+├─ AGROPECUARIA_guia_repo.md
+├─ AGROPECUARIA_guia_estructura_repo_v2.html
+├─ AGROPECUARIA_MODELO_NEGOCIO_PRICING_TABS.html
+├─ AGROPECUARIA_GUIA_TECNOLOGIAS.md
+└─ AGROPECUARIA_INFRA_COSTOS_BIG6.md
 ```
 
 ---
@@ -169,16 +169,16 @@ En esta conversación existen adjuntos que pueden estar **pendientes de commitea
 - `DRONIA_INFRA_COSTOS_BIG6_TABS_CON_DR_INCLUIDO.html`
 - `DRONIA_GUIA_TECNOLOGIAS_PROVEEDORES_DRON.html`
 - `DRONIA_TECH_STACK_MOBILE_BACKEND_MAPS.md`
-- `DRONIA_AI_BOOTSTRAP_UPDATED.md (local; revisar si coincide con el del repo)`
+- `AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md (local; revisar si coincide con el del repo)`
 
 ---
 
-## 9) Convención de naming: AGROPECUARIA vs DRONIA
+## 9) Convención de naming: AGROPECUARIA vs AGROPECUARIA
 
-En el repo conviven referencias “DRONIA” (histórico) con “AGROPECUARIA” (actual).  
+En el repo conviven referencias “AGROPECUARIA” (histórico) con “AGROPECUARIA” (actual).  
 Regla práctica:
 - Mantener nombres históricos en archivos existentes para no romper links,
-- pero en textos/README usar **AGROPECUARIA (ex-DRONIA)** hasta completar el rename.
+- pero en textos/README usar **AGROPECUARIA (ex-AGROPECUARIA)** hasta completar el rename.
 
 ---
 

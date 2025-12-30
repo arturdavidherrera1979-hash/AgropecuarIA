@@ -1,4 +1,4 @@
-﻿# DRONIA Docs
+﻿# AGROPECUARIA Docs
 
 This folder is the source of truth for decisions, assumptions, and the plan.
 
@@ -15,7 +15,7 @@ Conventions
 - Add a small Decision log section for non-obvious choices.
 
 ## Guía del repositorio
-📘 [Guía de estructura y acceso](DRONIA_guia_repo.md)
+📘 [Guía de estructura y acceso](AGROPECUARIA_guia_repo.md)
 
 
 

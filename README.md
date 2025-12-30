@@ -1,8 +1,8 @@
-# AGROPECUARIA — Documentación (ex-DRONIA)
+# AGROPECUARIA — Documentación (ex-AGROPECUARIA)
 
 Esta carpeta (`/docs`) es la **fuente de verdad** para decisiones, supuestos, arquitectura, roadmap y definición del MVP.
 
-> Nota de naming: el repositorio fue renombrado a **AGROPECUARIA**, pero varios archivos todavía conservan el prefijo **DRONIA**. Mantener consistencia en links y títulos; si se consolida el rename, renombrar archivos gradualmente.
+> Nota de naming: el repositorio fue renombrado a **AGROPECUARIA**, pero varios archivos todavía conservan el prefijo **AGROPECUARIA**. Mantener consistencia en links y títulos; si se consolida el rename, renombrar archivos gradualmente.
 
 ---
 
@@ -11,13 +11,13 @@ Esta carpeta (`/docs`) es la **fuente de verdad** para decisiones, supuestos, ar
 1) Conectar GitHub con la cuenta correcta: **`arturdavidherrera1979-hash`**  
 2) En el chat: `@github` → seleccionar repo **`arturdavidherrera1979-hash/AgropecuarIA`** (branch `main`)  
 3) Leer en este orden:
-- 🤖 **Bootstrap principal**: `docs/DRONIA_AI_BOOTSTRAP_UPDATED.md`
+- 🤖 **Bootstrap principal**: `docs/AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md`
 - 🧭 Visión: `docs/00_vision.md`
 - 🗺 Roadmap: `docs/10_roadmap.md`
 - 🧱 Arquitectura: `docs/20_architecture.md`
 - 🧬 Modelo de datos: `docs/30_data_model.md`
 - ✅ MVP: `docs/40_mvp_definition.md`
-- 🧠 Perfil IA: `docs/DRONIA_AI_PROFILE.md`
+- 🧠 Perfil IA: `docs/AGROPECUARIA_AI_PROFILE.md`
 
 ---
 
@@ -32,18 +32,18 @@ Esta carpeta (`/docs`) es la **fuente de verdad** para decisiones, supuestos, ar
 - `docs/40_mvp_definition.md`
 
 ### AI / Operación de chats
-- `docs/DRONIA_AI_PROFILE.md`
-- `docs/DRONIA_AI_BOOTSTRAP.md`
-- `docs/DRONIA_AI_BOOTSTRAP_UPDATED.md`  ← **usar este como principal**
+- `docs/AGROPECUARIA_AI_PROFILE.md`
+- `docs/AGROPECUARIA_AI_BOOTSTRAP.md`
+- `docs/AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md`  ← **usar este como principal**
 
 ### Guías del repo
-- `docs/DRONIA_guia_repo.md`
-- `docs/DRONIA_guia_estructura_repo_v2.html` (guía navegable)
+- `docs/AGROPECUARIA_guia_repo.md`
+- `docs/AGROPECUARIA_guia_estructura_repo_v2.html` (guía navegable)
 
 ### Investigación y materiales de soporte (histórico útil)
-- `docs/DRONIA_GUIA_TECNOLOGIAS.md`
-- `docs/DRONIA_INFRA_COSTOS_BIG6.md`
-- `docs/DRONIA_MODELO_NEGOCIO_PRICING_TABS.html`
+- `docs/AGROPECUARIA_GUIA_TECNOLOGIAS.md`
+- `docs/AGROPECUARIA_INFRA_COSTOS_BIG6.md`
+- `docs/AGROPECUARIA_MODELO_NEGOCIO_PRICING_TABS.html`
 
 ---
 
@@ -78,14 +78,14 @@ AgropecuarIA/
 │  ├─ 20_architecture.md
 │  ├─ 30_data_model.md
 │  ├─ 40_mvp_definition.md
-│  ├─ DRONIA_AI_PROFILE.md
-│  ├─ DRONIA_AI_BOOTSTRAP.md
-│  ├─ DRONIA_AI_BOOTSTRAP_UPDATED.md
-│  ├─ DRONIA_guia_repo.md
-│  ├─ DRONIA_guia_estructura_repo_v2.html
-│  ├─ DRONIA_MODELO_NEGOCIO_PRICING_TABS.html
-│  ├─ DRONIA_GUIA_TECNOLOGIAS.md
-│  └─ DRONIA_INFRA_COSTOS_BIG6.md
+│  ├─ AGROPECUARIA_AI_PROFILE.md
+│  ├─ AGROPECUARIA_AI_BOOTSTRAP.md
+│  ├─ AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md
+│  ├─ AGROPECUARIA_guia_repo.md
+│  ├─ AGROPECUARIA_guia_estructura_repo_v2.html
+│  ├─ AGROPECUARIA_MODELO_NEGOCIO_PRICING_TABS.html
+│  ├─ AGROPECUARIA_GUIA_TECNOLOGIAS.md
+│  └─ AGROPECUARIA_INFRA_COSTOS_BIG6.md
 ├─ meetings/
 │  ├─ template.md
 │  ├─ reunion_inicial.txt
@@ -121,6 +121,6 @@ AgropecuarIA/
 
 - Consolidar naming: decidir si se renombra gradualmente `DRONIA_*` a `AGROPECUARIA_*` o se mantiene por compatibilidad.
 - Linkear desde `README.md` (raíz) hacia:
-  - `docs/DRONIA_AI_BOOTSTRAP_UPDATED.md`
+  - `docs/AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md`
   - `docs/README.md`
   - `meetings/minuta_reunion_11-12-2025.html`
