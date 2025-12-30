@@ -1,21 +1,25 @@
-﻿# AGROPECUARIA Docs
+<p align="center">
+  <img src="assets/agropecuaria_logo.png" alt="AGROPECUARIA" width="180"/>
+</p>
 
-This folder is the source of truth for decisions, assumptions, and the plan.
+# Documentación (docs/)
 
-Index
-- 00_vision.md
-- 10_roadmap.md
-- 20_architecture.md
-- 30_data_model.md
-- 40_mvp_definition.md
+Esta carpeta es la **fuente de verdad** del proyecto: decisiones, supuestos, arquitectura, roadmap y definición del MVP.
 
-Conventions
-- Keep docs short and editable.
-- Prefer checklists + links to GitHub Issues.
-- Add a small Decision log section for non-obvious choices.
+## Lectura recomendada (orden sugerido)
 
-## Guía del repositorio
-📘 [Guía de estructura y acceso](AGROPECUARIA_guia_repo.md)
+1) **Bootstrap IA:** `AGROPECUARIA_AI_BOOTSTRAP.md`  
+2) **Visión:** `00_vision.md`  
+3) **Roadmap:** `10_roadmap.md`  
+4) **Arquitectura:** `20_architecture.md`  
+5) **Modelo de datos:** `30_data_model.md`  
+6) **MVP:** `40_mvp_definition.md`  
 
+## Guías
 
+- **Guía del repo (Markdown):** `AGROPECUARIA_guia_repo.md`
+- **Guía navegable (HTML):** `AGROPECUARIA_guia_estructura_repo.html`
 
+## Regla de mantenimiento
+
+Si existen documentos duplicados por “versionado en el nombre” (por ejemplo `*_UPDATED`, `*v2`), se unifica en **un único archivo** y se elimina el más viejo.

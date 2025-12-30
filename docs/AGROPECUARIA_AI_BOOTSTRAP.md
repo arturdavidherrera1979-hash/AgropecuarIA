@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="assets/agropecuaria_logo.png" alt="AGROPECUARIA" width="180"/>
+</p>
+
 # AGROPECUARIA – AI Bootstrap (contexto para rehidratar en un chat nuevo)
 
-**Repo:** https://github.com/arturdavidherrera1979-hash/dronia  
+**Repo:** https://github.com/arturdavidherrera1979-hash/AgropecuarIA  
 **Branch principal:** `main`  
 **Actualizado:** 2025-12-27
 
@@ -10,7 +14,7 @@
 
 ```text
 Proyecto: AGROPECUARIA
-Repo: https://github.com/arturdavidherrera1979-hash/dronia (branch main)
+Repo: https://github.com/arturdavidherrera1979-hash/AgropecuarIA (branch main)
 Leé: docs/AI_BOOTSTRAP.md, docs/guia_repo.md, docs/00_vision.md, docs/10_roadmap.md, docs/40_mvp_definition.md
 Luego: revisá issues abiertos y resumime estado + próximos pasos.
 ```
@@ -94,7 +98,7 @@ Pegar esto cuando abras un chat nuevo para que la IA se auto-ubique:
 
 ```text
 Proyecto: AGROPECUARIA
-Repo: https://github.com/arturdavidherrera1979-hash/dronia (branch main)
+Repo: https://github.com/arturdavidherrera1979-hash/AgropecuarIA (branch main)
 Leé: docs/AI_BOOTSTRAP.md, docs/guia_repo.md, docs/00_vision.md, docs/10_roadmap.md, docs/40_mvp_definition.md
 Luego: revisá issues abiertos y resumime estado + próximos pasos.
 ```
@@ -105,3 +109,21 @@ Luego: revisá issues abiertos y resumime estado + próximos pasos.
 - [ ] Actualizar sección “Estado actual” al menos 1 vez por semana.
 - [ ] Cuando se cierre un hito, registrar qué cambió y enlazar PR/Issue.
 - [ ] Si cambia la estructura del repo, actualizar sección 3.
+
+## Orden de lectura recomendado
+
+- `docs/00_vision.md`
+- `docs/10_roadmap.md`
+- `docs/40_mvp_definition.md`
+- `docs/AGROPECUARIA_guia_repo.md`
+- `docs/AGROPECUARIA_guia_estructura_repo.html`
+
+## Comandos mínimos (Windows)
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python src/agropecuaria_core/main.py
+pytest -q
+```

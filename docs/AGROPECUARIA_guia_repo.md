@@ -1,6 +1,10 @@
-# AGROPECUARIA – Guía del repositorio y estructura
+<p align="center">
+  <img src="assets/agropecuaria_logo.png" alt="AGROPECUARIA" width="180"/>
+</p>
 
-**Repo:** https://github.com/arturdavidherrera1979-hash/dronia  
+# AGROPECUARIA — Guía del repositorio y estructura
+
+**Repo:** https://github.com/arturdavidherrera1979-hash/AgropecuarIA  
 **Actualizado:** 2025-12-26
 
 > Nota: GitHub Pages está deshabilitado para repos privados sin upgrade, así que la forma más simple de que *se vea bien en GitHub* es mantener esta guía en **Markdown** (este archivo).  
@@ -10,7 +14,7 @@
 
 ## 0) Acceso al repositorio (para nuevos colaboradores)
 
-**Link oficial:** https://github.com/arturdavidherrera1979-hash/dronia
+**Link oficial:** https://github.com/arturdavidherrera1979-hash/AgropecuarIA
 
 **Paso previo:** aceptar la invitación a colaborar en GitHub.  
 Si no aceptan, en repos privados suele aparecer como “no existe” / “not found”.
@@ -28,7 +32,7 @@ Si no aceptan, en repos privados suele aparecer como “no existe” / “not fo
 ### Opción B: GitHub Desktop (recomendado para no técnicos)
 1. Instalar GitHub Desktop.
 2. Iniciar sesión con la cuenta de GitHub.
-3. `File → Clone repository…` → elegir `dronia` → seleccionar carpeta local.
+3. `File → Clone repository…` → elegir `AGROPECUARIA` → seleccionar carpeta local.
 4. Editar archivos → commit → push → Pull Request.
 
 ### Opción C: Git (CLI) para devs
@@ -53,7 +57,7 @@ La idea es que cualquiera pueda entrar, entender el estado y contribuir sin depe
 ## 2) Mapa rápido de la estructura
 
 ```text
-dronia/
+AGROPECUARIA/
 ├─ .github/
 │  ├─ workflows/
 │  │  └─ ci.yml
@@ -68,7 +72,7 @@ dronia/
 ├─ hardware/
 ├─ meetings/
 ├─ src/
-│  └─ dronia_core/
+│  └─ AGROPECUARIA_core/
 ├─ tests/
 ├─ Dockerfile
 ├─ requirements.txt
@@ -92,7 +96,7 @@ dronia/
 | `hardware/` | Investigación drones/sensores (stack operativo). | Técnico/Operaciones | comparativas, criterios, costos |
 | `meetings/` | Minutas y plantillas de reuniones. | Todo el equipo | template + minutas por fecha |
 | `src/` | Código fuente (ejecutable). | Dev | módulos, pipeline |
-| `src/dronia_core/` | Núcleo del proyecto (lógica principal). | Dev | entrypoint + utilidades |
+| `src/AGROPECUARIA_core/` | Núcleo del proyecto (lógica principal). | Dev | entrypoint + utilidades |
 | `tests/` | Tests automatizados. | Dev/QA | unit/integration tests |
 
 ---
