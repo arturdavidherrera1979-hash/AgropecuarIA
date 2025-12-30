@@ -1,5 +1,0 @@
-# Movido
-
-Este documento fue renombrado a: `/docs/AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md`
-
-Abrir: [AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md](/docs/AGROPECUARIA_AI_BOOTSTRAP_UPDATED.md)

@@ -1,5 +1,0 @@
-# Movido
-
-Este documento fue renombrado a: `/docs/AGROPECUARIA_GUIA_TECNOLOGIAS.md`
-
-Abrir: [AGROPECUARIA_GUIA_TECNOLOGIAS.md](/docs/AGROPECUARIA_GUIA_TECNOLOGIAS.md)
