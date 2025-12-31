@@ -1,6 +1,9 @@
-﻿FROM python:3.11-slim
+FROM python:3.11-slim
 WORKDIR /app
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-CMD ["python","-m","dronia_core.main"]
+ENV PYTHONPATH=/app/src
+CMD ["python","-m","agropecuaria_core.main"]
