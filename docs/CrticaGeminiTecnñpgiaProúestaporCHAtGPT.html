@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Infraestructura Drones Agrícolas - AGROPECUARIA</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.tabs { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+.tab-container { display: flex; flex-wrap: wrap; }
+.tab { flex: 1; min-width: 200px; }
+.tab a {
+display: block; padding: 20px 30px; text-decoration: none; background: #f8f9fa; color: #666;
+font-weight: 600; border-bottom: 3px solid transparent; transition: all 0.3s ease;
+position: relative;
+}
+.tab a:hover { background: #e9ecef; color: #007bff; }
+.tab.active a { background: white; color: #007bff; border-bottom-color: #007bff; }
+.tab-content { display: none; padding: 30px; background: white; }
+.tab.active .tab-content { display: block; }
+.tab-content h2 { color: #2c3e50; margin-bottom: 20px; font-size: 1.8em; }
+.tab-content h3 { color: #34495e; margin: 25px 0 15px 0; }
+.fortaleza { background: #d4edda; border-left: 5px solid #28a745; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.debilidad { background: #f8d7da; border-left: 5px solid #dc3545; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.checklist { background: #e7f3ff; padding: 20px; border-radius: 8px; margin: 20px 0; }
+/* TABLA FIX DESBORDAMIENTO TOTAL */
+.table-container { overflow-x: auto; margin: 20px 0; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+table {
+width: 100%; min-width: 600px; border-collapse: collapse; background: white;
+border-radius: 8px;
+}
+th, td {
+padding: 12px 10px; text-align: left; border-bottom: 1px solid #eee;
+max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+th {
+background: #007bff; color: white; font-weight: 600;
+position: sticky; top: 0; z-index: 10;
+}
+/* COSTOS CELDAS ESPECÍFICAS */
+.cost-col { max-width: 85px; }
+.cost-col td {
+font-size: 14px; font-weight: 500;
+overflow-wrap: anywhere; word-break: break-word;
+line-height: 1.3;
+}
+.cost-highlight { background: #d4edda !important; font-weight: 600; }
+tr:hover { background: #f8f9ff; }
+.recomendacion { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0; }
+.emoji { font-size: 2em; margin-bottom: 15px; }
+@media (max-width: 768px) {
+.tab a { padding: 15px; font-size: 14px; }
+.tab-content { padding: 20px; }
+th, td { padding: 8px 6px; font-size: 13px; }
+.cost-col { max-width: 70px; }
+.cost-col td { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 style="text-align: center; margin: 40px 0 20px; color: #2c3e50;">🚁 Análisis Infraestructura Drones Agrícolas</h1>
+<p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1em;">
+</p>
+<div class="tabs" id="tabs">
+<div class="tab-container">
+<div class="tab active" data-tab="tab1">
+<a href="#tab1">✅ Veredicto Final</a>
+<div class="tab-content">
+<div class="emoji">🎯</div>
+<h2><strong>100% APROBADO</strong> para los 3 segmentos</h2>
+<div class="fortaleza">
+<strong>La arquitectura propuesta es EXCELENTE</strong> para drones agrícolas (80-100GB/vuelo).
+</div>
+<div class="recomendacion">
+<h3>🚀 RECOMENDACIÓN INMEDIATA</h3>
+<p><strong>MVP: OCI + Postgres + CDN (90 días)</strong></p>
+<p>Costos controlados + offline-first + escalable x3 segmentos</p>
+</div>
+<div class="checklist">
+<h3>Checklist MVP (12 semanas)</h3>
+<ul style="list-style: none; padding: 0;">
+<li>✅ <strong>Región:</strong> São Paulo (AWS/GCP/OCI)</li>
+<li>✅ <strong>Piloto:</strong> 1 vuelo → medir compute/GB</li>
+<li>✅ <strong>Stack:</strong> Object Storage + Batch containers + Tiles</li>
+<li>✅ <strong>Aeroterra:</strong> RACI claro (ellos GIS, vos SSOT)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tab" data-tab="tab2">
+<a href="#tab2">💪 Fortalezas Clave</a>
+<div class="tab-content">
+<h2>Por qué ESTA arquitectura es perfecta para AGRO</h2>
+<div class="fortaleza">
+<h3>1. **Volúmenes masivos manejados**</h3>
+<p><strong>80-100GB/vuelo</strong> → Object Storage + COG/tiles procesa multiespectral, térmico, RGB sin problemas.[1][3]</p>
+</div>
+<div class="fortaleza">
+<h3>2. **Offline-first = IDEAL para campo**</h3>
+<p>Captura sin internet → upload diferido → cache mobile. Perfecto para productores sin fibra.[2][3]</p>
+</div>
+<div class="fortaleza">
+<h3>3. **Costos agro-optimizados**</h3>
+<p><strong>OCI 10TB egress GRATIS</strong> → sirve mapas masivos sin explotar factura. Spot para batch.[1]</p>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Segmento</th>
+<th>¿Por qué funciona?</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>Pequeños</strong></td><td>Mobile offline + bajo costo SaaS</td></tr>
+<tr><td><strong>Medianos</strong></td><td>SaaS + ArcGIS opcional</td></tr>
+<tr><td><strong>Grandes</strong></td><td>Enterprise SSO + partner Aeroterra</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="tab" data-tab="tab3">
+<a href="#tab3">⚠️ Debilidades & Riesgos</a>
+<div class="tab-content">
+<h2>Problemas identificados (TODOS solucionables)</h2>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Debilidad</th>
+<th>Impacto</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #fff3cd;">
+<td>Egress región-specific</td>
+<td>Azure SA caro</td>
+<td>OCI/GCP + calculadora TCO</td>
+</tr>
+<tr style="background: #f8d7da;">
+<td>Batch no especificado</td>
+<td>Fotogrametría? NDVI?</td>
+<td><strong>Piloto 1 vuelo</strong></td>
+</tr>
+<tr style="background: #f8d7da;">
+<td>Aeroterra lock-in</td>
+<td>Grandes quieren ArcGIS</td>
+<td><strong>SSOT propio</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="debilidad">
+<h3>⚠️ ÚNICO RIESGO MEDIO: Aeroterra Partnership</h3>
+<p><strong>MITIGACIÓN:</strong> RACI escrito desde día 1. AGROPECUARIA = SSOT + IA. Aeroterra = solo GIS publication.</p>
+</div>
+</div>
+</div>
+<div class="tab" data-tab="tab4">
+<a href="#tab4">📊 Costos Esperados</a>
+<div class="tab-content">
+<h2>Estimación TCO (50 vuelos/mes × 90GB)</h2>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Volumen</th>
+<th class="cost-col">OCI</th>
+<th class="cost-col">AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage Raw (60 días)</td>
+<td>9TB</td>
+<td class="cost-col cost-highlight">~$200/mes</td>
+<td class="cost-col">~$250/mes</td>
+</tr>
+<tr>
+<td>Egress (tiles mapas)</td>
+<td>1TB</td>
+<td class="cost-col cost-highlight"><strong>$0</strong><br>10TB gratis</td>
+<td class="cost-col">$90-180</td>
+</tr>
+<tr>
+<td>Batch (fotogrametría)</td>
+<td>Variable</td>
+<td class="cost-col">Spot 50%↓</td>
+<td class="cost-col">Spot 50%↓</td>
+</tr>
+<tr style="font-weight: bold; background: #d4edda;">
+<td><strong>TOTAL MVP</strong></td>
+<td>-</td>
+<td class="cost-col"><strong>~$400</strong></td>
+<td class="cost-col">~$600</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="recomendacion">
+<h3>💡 TCO Winner: OCI (egress gratis cambia TODO)</h3>
+<p>Próximo paso: <strong>correlacionar calculadoras oficiales</strong> con tu región exacta</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 40px; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+<h3 style="color: #28a745;">✅ Veredicto Final del Analista</h3>
+<p style="font-size: 1.2em; font-weight: 600; color: #2c3e50;">
+<strong>"El documento está TÉCNICAMENTE SÓLIDO y COMERCIALMENTE INTELIGENTE.
+Es la arquitectura correcta para drones agrícolas Latam 2025."</strong>
+</p>
+<div style="margin-top: 20px;">
+<span style="background: #28a745; color: white; padding: 8px 16px; border-radius: 25px; font-weight: 600;">LISTO PARA MVP</span>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const tabs = document.querySelectorAll('.tab');
+const links = document.querySelectorAll('.tab a');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+// Remover active de todos
+tabs.forEach(tab => tab.classList.remove('active'));
+// Activar pestaña clickeada
+const parentTab = this.closest('.tab');
+parentTab.classList.add('active');
+// Ocultar todos los contents
+document.querySelectorAll('.tab-content').forEach(content => {
+content.style.display = 'none';
+});
+// Mostrar content activo
+parentTab.querySelector('.tab-content').style.display = 'block';
+});
+});
+});
+</script>
+</body>
+</html>

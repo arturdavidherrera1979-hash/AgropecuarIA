@@ -1,0 +1,302 @@
+$ErrorActionPreference = "Stop"
+
+# --- 1) Encontrar raíz del repo (busca .git hacia arriba) ---
+$repo = Get-Location
+while ($repo -and -not (Test-Path (Join-Path $repo ".git"))) {
+  $parent = Split-Path $repo -Parent
+  if ($parent -eq $repo) { $repo = $null; break }
+  $repo = $parent
+}
+if (-not $repo) {
+  throw "No encuentro .git. Parate en la carpeta del repo y volvé a correr."
+}
+
+Set-Location $repo
+[System.Environment]::CurrentDirectory = (Get-Location).Path
+
+# --- 2) Paths ABSOLUTOS (evita System32) ---
+$reportsDir = Join-Path $repo "reports_fix"
+New-Item -ItemType Directory -Force $reportsDir | Out-Null
+$scriptPath = Join-Path $reportsDir "qa_repo.py"
+
+# (Opcional) si querés chequear presencia del logo en docs, poné el hint:
+# Ej: $logoHint = "docs/assets/AGROPECUARIA.png"
+$logoHint = ""
+
+# --- 3) Código Python (QA diagnóstico) ---
+$py = @'
+from __future__ import annotations
+
+from pathlib import Path
+import argparse
+import json
+import re
+import sys
+from collections import defaultdict
+
+TEXT_EXTS = {".md", ".html", ".htm", ".yml", ".yaml", ".py", ".txt", ".toml", ".ini", ".cfg", ".json"}
+SPECIAL_NAMES = {"Dockerfile", ".gitattributes", ".gitignore", ".editorconfig"}
+
+EXCLUDE_DIRS = {
+    ".git", ".venv", "venv", "__pycache__", "node_modules", "dist", "build",
+    "reports_fix/backup_docs", "reports_fix\\backup_docs",
+}
+
+MOJIBAKE_TOKENS = ["Ã", "Â", "â€”", "â€“", "â€", "â€™", "â€œ", "â€�", "â€¦", "ðŸ", "\ufffd"]
+VERSION_TOKENS_RE = re.compile(r"(?i)(?:[_\-\s]*(?:v\d+|ver\d+|version\d+|updated|update|old|nuevo|new|draft|final|copy|\(\d+\)))+$")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+DRONIA_RE = re.compile(r"(?i)\b(dronia|dronia_core)\b")
+
+def is_excluded(path: Path, root: Path) -> bool:
+    rel = path.relative_to(root).as_posix()
+    parts = rel.split("/")
+    if any(p in EXCLUDE_DIRS for p in parts):
+        return True
+    if rel.startswith("reports_fix/") and not rel.endswith("qa_repo.py"):
+        return True
+    return False
+
+def looks_text(path: Path) -> bool:
+    if path.name in SPECIAL_NAMES:
+        return True
+    return path.suffix.lower() in TEXT_EXTS
+
+def detect_decode(raw: bytes) -> tuple[str, str, bool]:
+    had_bom = False
+    if raw.startswith(b"\xef\xbb\xbf"):
+        raw = raw[3:]
+        had_bom = True
+    if b"\x00" in raw:
+        raise ValueError("binary")
+    try:
+        return raw.decode("utf-8"), "utf-8", had_bom
+    except UnicodeDecodeError:
+        return raw.decode("cp1252"), "cp1252", had_bom
+
+def newline_stats(raw: bytes) -> dict:
+    crlf = raw.count(b"\r\n")
+    lf = raw.count(b"\n") - crlf
+    cr = raw.count(b"\r") - crlf
+    return {"crlf": crlf, "lf": lf, "cr": cr}
+
+def has_final_newline(raw: bytes) -> bool:
+    return raw.endswith(b"\n") or raw.endswith(b"\r\n")
+
+def mojibake_score(text: str) -> int:
+    return sum(text.count(t) for t in MOJIBAKE_TOKENS)
+
+def normalize_base_name(stem: str) -> str:
+    stem = VERSION_TOKENS_RE.sub("", stem)
+    stem = stem.strip(" _-")
+    return stem.lower()
+
+def iter_text_files(root: Path):
+    for p in root.rglob("*"):
+        if not p.is_file():
+            continue
+        if is_excluded(p, root):
+            continue
+        if looks_text(p):
+            yield p
+
+def check_markdown_links(path: Path, text: str, root: Path):
+    issues = []
+    for _, target in MD_LINK_RE.findall(text):
+        tgt = target.strip()
+        if tgt.startswith(("http://", "https://", "mailto:")):
+            continue
+        if tgt.startswith("#") or tgt == "":
+            continue
+        tgt2 = tgt.split("#", 1)[0].strip()
+        if tgt2 == "":
+            continue
+        tgt2 = tgt2.replace("%20", " ")
+        resolved = (path.parent / tgt2).resolve()
+        try:
+            resolved.relative_to(root.resolve())
+        except ValueError:
+            issues.append({"type": "link_outside_repo", "target": tgt, "resolved": str(resolved)})
+            continue
+        if not resolved.exists():
+            issues.append({"type": "broken_link", "target": tgt, "resolved": str(resolved.relative_to(root))})
+    return issues
+
+def check_logo_presence(text: str, logo_hint: str | None):
+    if not logo_hint:
+        return None
+    return logo_hint in text
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--root", default=".", help="Root del repo (default: .)")
+    ap.add_argument("--logo-hint", default="", help="Texto a buscar para el logo (ej: docs/assets/logo.png)")
+    ap.add_argument("--strict", action="store_true", help="Exit code 1 si hay hallazgos")
+    args = ap.parse_args()
+
+    root = Path(args.root).resolve()
+    logo_hint = args.logo_hint.strip() or None
+
+    findings = {"summary": {}, "files": [], "duplicates": [], "broken_links": [], "dronia_hits": []}
+    counters = defaultdict(int)
+    dup_groups = defaultdict(list)
+
+    for p in iter_text_files(root):
+        rel = p.relative_to(root).as_posix()
+        raw = p.read_bytes()
+
+        f = {
+            "path": rel,
+            "size": p.stat().st_size,
+            "encoding": None,
+            "bom": False,
+            "final_newline": has_final_newline(raw),
+            "newlines": newline_stats(raw),
+            "mojibake_score": None,
+            "issues": [],
+        }
+
+        try:
+            text, enc, had_bom = detect_decode(raw)
+            f["encoding"] = enc
+            f["bom"] = had_bom
+        except ValueError:
+            counters["skip_binary"] += 1
+            continue
+
+        if f["encoding"] != "utf-8":
+            f["issues"].append("non_utf8_encoding")
+            counters["non_utf8"] += 1
+
+        if f["bom"]:
+            f["issues"].append("has_utf8_bom")
+            counters["bom"] += 1
+
+        nl = f["newlines"]
+        kinds = sum(1 for k in ("crlf", "lf", "cr") if nl[k] > 0)
+        if kinds > 1:
+            f["issues"].append("mixed_line_endings")
+            counters["mixed_eol"] += 1
+
+        if not f["final_newline"]:
+            f["issues"].append("missing_final_newline")
+            counters["no_final_newline"] += 1
+
+        ms = mojibake_score(text)
+        f["mojibake_score"] = ms
+        if ms > 0:
+            f["issues"].append("mojibake_tokens_present")
+            counters["mojibake"] += 1
+
+        if DRONIA_RE.search(text):
+            counters["dronia_leftovers"] += 1
+            findings["dronia_hits"].append(rel)
+
+        if p.suffix.lower() == ".md":
+            bl = check_markdown_links(p, text, root)
+            if bl:
+                counters["broken_links"] += len(bl)
+                for it in bl:
+                    it["file"] = rel
+                    findings["broken_links"].append(it)
+
+            if logo_hint is not None and rel.startswith("docs/"):
+                ok = check_logo_presence(text, logo_hint)
+                if ok is False:
+                    f["issues"].append("logo_missing_hint")
+                    counters["logo_missing"] += 1
+
+        if rel.startswith("docs/") and p.suffix.lower() in {".md", ".html", ".htm"}:
+            base = normalize_base_name(p.stem)
+            dup_groups[(base, p.suffix.lower())].append(rel)
+
+        if f["issues"]:
+            findings["files"].append(f)
+
+    for (base, ext), paths in sorted(dup_groups.items(), key=lambda x: (x[0][0], x[0][1])):
+        if len(paths) <= 1:
+            continue
+        def score(path: str):
+            name = Path(path).stem.lower()
+            v = 1 if VERSION_TOKENS_RE.search(name) else 0
+            return (v, len(name), name)
+        sorted_paths = sorted(paths, key=score)
+        canonical = sorted_paths[0]
+        findings["duplicates"].append({
+            "base": base,
+            "ext": ext,
+            "canonical_suggestion": canonical,
+            "others": [p for p in sorted_paths[1:]],
+        })
+        counters["duplicate_groups"] += 1
+
+    findings["summary"] = dict(sorted(counters.items(), key=lambda x: x[0]))
+
+    out_dir = root / "reports_fix"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    json_path = out_dir / "qa_report.json"
+    md_path = out_dir / "qa_report.md"
+
+    json_path.write_text(json.dumps(findings, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    lines = []
+    lines.append("# QA report — Repo diagnostics\n")
+    lines.append("## Resumen")
+    if findings["summary"]:
+        for k, v in findings["summary"].items():
+            lines.append(f"- **{k}**: {v}")
+    else:
+        lines.append("- (sin hallazgos)")
+
+    if findings["duplicates"]:
+        lines.append("\n## Duplicados detectados (sugerencia de canónico)")
+        for d in findings["duplicates"]:
+            lines.append(f"- **{d['base']}{d['ext']}**")
+            lines.append(f"  - canonical: `{d['canonical_suggestion']}`")
+            for o in d["others"]:
+                lines.append(f"  - other: `{o}`")
+
+    if findings["broken_links"]:
+        lines.append("\n## Links rotos (Markdown)")
+        for it in findings["broken_links"][:200]:
+            lines.append(f"- `{it['file']}` -> `{it['target']}` (resuelve a `{it['resolved']}`) [{it['type']}]")
+        if len(findings["broken_links"]) > 200:
+            lines.append(f"- ... ({len(findings['broken_links'])-200} más)")
+
+    if findings["dronia_hits"]:
+        lines.append("\n## Restos de DRONIA / dronia_core")
+        for f in sorted(set(findings["dronia_hits"])):
+            lines.append(f"- `{f}`")
+
+    if findings["files"]:
+        lines.append("\n## Archivos con issues (detalle)")
+        for f in findings["files"][:200]:
+            issues = ", ".join(f["issues"])
+            lines.append(f"- `{f['path']}` — {issues} — enc={f['encoding']} bom={f['bom']} mojibake={f['mojibake_score']} nl={f['newlines']} final_nl={f['final_newline']}")
+        if len(findings["files"]) > 200:
+            lines.append(f"- ... ({len(findings['files'])-200} más)")
+
+    md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    print("OK: reporte generado:")
+    print(f"- {md_path}")
+    print(f"- {json_path}")
+
+    if args.strict and (findings["files"] or findings["duplicates"] or findings["broken_links"] or findings["dronia_hits"]):
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+'@
+
+# --- 4) Escribir qa_repo.py en UTF-8 SIN BOM ---
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($scriptPath, $py, $utf8NoBom)
+
+# --- 5) Ejecutar ---
+$argsList = @($scriptPath)
+if ($logoHint -and $logoHint.Trim().Length -gt 0) {
+  $argsList += @("--logo-hint", $logoHint)
+}
+python @argsList
+
+Write-Host "`nListo. Abrí: $reportsDir\qa_report.md"
